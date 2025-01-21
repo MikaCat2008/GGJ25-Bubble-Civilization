@@ -17,7 +17,7 @@ public class Test : MonoBehaviour
 
         Debug.Log(this.bubble.buildings.GetBuildingType(2));
 
-        this.bubble.buildings.SetBuildingType(2, BuildingType.OxygenFactory);
+        this.bubble.buildings.SetBuildingType(2, BuildingType.GreenHouse_Oxygen);
 
         Debug.Log(this.bubble.buildings.GetBuildingType(2));
     }
