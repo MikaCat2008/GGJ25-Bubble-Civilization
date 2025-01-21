@@ -1,7 +1,4 @@
-using UnityEngine;
-
-
-namespace BubbleApi
+﻿namespace BubbleApi
 {
     public enum BuildingType
     {
@@ -11,8 +8,8 @@ namespace BubbleApi
 
     public class BuildingsContainer
     {
-        BuildingType[] container;    
-    
+        BuildingType[] container;
+
         public BuildingsContainer(byte count)
         {
             this.container = new BuildingType[count];
