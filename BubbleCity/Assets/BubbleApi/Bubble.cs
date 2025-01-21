@@ -1,7 +1,4 @@
-﻿using UnityEngine;
-
-
-namespace BubbleApi
+﻿namespace BubbleApi
 {
     public class Bubble
     {

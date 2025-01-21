@@ -3,7 +3,15 @@
     public enum BuildingType
     {
         Empty = 0,
-        OxygenFactory = 1
+        House = 1,
+        Mine_Fuel = 2,
+        Mine_Materials = 3,
+        GreenHouse_Food = 4,
+        GreenHouse_Oxygen = 5,
+        GreenHouse_Materials = 6,
+        ShipDock_Discovery = 7,
+        ShipDock_MaterialCollecting = 8,
+        AirPurification = 9
     }
 
     public class BuildingsContainer
