@@ -1,4 +1,7 @@
-﻿namespace BubbleApi
+﻿using System.Collections.Generic;
+
+
+namespace BubbleApi
 {
     public enum BuildingType
     {
@@ -16,16 +19,11 @@
 
     public class BuildingsContainer
     {
-        BuildingType[] container;
+        public List<BuildingType> container;
 
-        public BuildingsContainer(byte count)
+        public BuildingsContainer()
         {
-            this.container = new BuildingType[count];
-
-            for (byte i = 0; i < count; i++)
-            {
-                this.container[i] = BuildingType.Empty;
-            }
+            this.container = new List<BuildingType>();
         }
 
         public BuildingType GetBuildingType(byte id)
