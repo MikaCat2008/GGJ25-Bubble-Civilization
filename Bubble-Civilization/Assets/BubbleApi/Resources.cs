@@ -1,5 +1,16 @@
 ﻿namespace BubbleApi
 {
+    public enum ResourceType
+    {
+        Food,
+        Fuel,
+        Energy,
+        Oxygen,
+        Happiness,
+        Materials,
+        Population
+    }
+
     public struct ResourcesContainer
     {
         public int food;

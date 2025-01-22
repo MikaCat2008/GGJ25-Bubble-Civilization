@@ -3,8 +3,23 @@
 
 namespace BubbleApi
 {
+    public enum BubbleApiExceptionType
+    {
+        AnotherBuildingType,
+        HouseIsFull,
+        NotEnoughResources,
+        IncorrectBuildingData,
+        RequireRepair
+    }
+
     public class BubbleApiException : Exception 
     {
-        public BubbleApiException(string text) : base(text) {}
+        public BubbleApiExceptionType type;
+
+        public BubbleApiException(BubbleApiExceptionType type) 
+            : base(type.ToString())
+        {
+            this.type = type;
+        }
     }
 }

@@ -5,7 +5,7 @@
         public int count;
         public int capacity;
 
-        public House_BuildingData()
+        public House_BuildingData() : base()
         {
             this.count = 0;
             this.capacity = 0;

@@ -11,7 +11,7 @@
     {
         public MineType type;
 
-        public Mine_BuildingData()
+        public Mine_BuildingData() : base()
         {
             this.type = MineType.Free;
         }
