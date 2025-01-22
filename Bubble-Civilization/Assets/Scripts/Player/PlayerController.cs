@@ -1,46 +1,27 @@
 using UnityEngine;
 
+
+
+//Control Camera Movement oin Exploration Mode
 public class PlayerController : MonoBehaviour
 {
-    public Vector3 screenPosition;
-    public Vector3 worldPosition;
-    Plane plane = new Plane(Vector3.right, -20);
+    public float Speed = 10.0f;
+
+
+    //zoom speed
+    //zoom max
+
+
+
+
 
     // Update is called once per frame
     void Update()
     {
-        screenPosition = Input.mousePosition;
-        
-        //Get Ray and plane intersection point
-        Ray ray = Camera.main.ScreenPointToRay(screenPosition);
-        if (plane.Raycast(ray, out float distance))
-        {
-            worldPosition = ray.GetPoint(distance);
-        }
-
-        transform.position = worldPosition;
+        float horizontal = Input.GetAxisRaw("Horizontal");
+        float vertical = Input.GetAxisRaw("Vertical");
+        Vector3 PositionDelta = new Vector3(Speed * horizontal * Time.deltaTime, Speed * vertical * Time.deltaTime, 0);
+        this.gameObject.transform.position += PositionDelta;
     }
 
-
-
-    public void RaycastWith3dColliders()
-    {
-        screenPosition = Input.mousePosition;
-        Ray ray = Camera.main.ScreenPointToRay(screenPosition);
-
-        if (Physics.Raycast(ray, out RaycastHit hitData))
-        {
-            worldPosition = hitData.point;
-        }
-
-        transform.position = worldPosition;
-    }
-    public void movePlayerWithMouse()
-    {
-        screenPosition = Input.mousePosition;
-        screenPosition.z = Camera.main.nearClipPlane + 1;
-
-        worldPosition = Camera.main.ScreenToWorldPoint(screenPosition);
-        transform.position = worldPosition;
-    }
 }
