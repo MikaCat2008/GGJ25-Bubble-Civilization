@@ -24,10 +24,10 @@ public class Test : MonoBehaviour
 
     Bubble CreateBubble()
     {
-        // приклад створення бульбашки з ресурсами всі під 100
+        // приклад створення бульбашки
 
         ResourcesContainer resources = new ResourcesContainer(
-            100, 100, 100, 100, 100, 100, 100
+            200, 200, 200, 100, 100, 200, 0
         );
         BuildingsContainer buildings = new BuildingsContainer();
 
@@ -38,20 +38,35 @@ public class Test : MonoBehaviour
         return bubble;
     }
 
+    void PrintResources(string text, Bubble bubble)
+    {
+        Debug.Log(text + " " +
+            "Ресурси: " +
+            $"Їжа({bubble.resources.food}), " + 
+            $"Щастя({bubble.resources.happiness}), " + 
+            $"Кисень({bubble.resources.oxygen}), " + 
+            $"Паливо({bubble.resources.fuel}), " + 
+            $"Енергія({bubble.resources.energy}), " + 
+            $"Населення({bubble.resources.population}), " + 
+            $"Будівельні матеріали({bubble.resources.materials})"
+        );
+    }
+
     void Test_Gameplay()
     {
         Bubble bubble = this.CreateBubble();
 
 
         /// СЕКТОР З БУДИНКОМ
+        this.PrintResources("Сектор з будинком.", bubble);
 
 
         // будівля з айді 1 стала будинком
-        // витратилось 30 будівельного матеріалу і 20 їжі
+        // витратилось 20 їжі і 30 будівельного матеріалу
 
         Building house = this.house_system.Build(1, bubble);
 
-        Debug.Log($"Кількість їжі після 1 і 2 заселення: {bubble.resources.food}"); // 90
+        this.PrintResources("Будівництво будинку.", bubble);
 
         // задати максимальне населення 3 людини
         this.house_system.SetCapacity(house, 3);
@@ -60,7 +75,8 @@ public class Test : MonoBehaviour
         this.house_system.Settle(house, bubble);
         this.house_system.Settle(house, bubble);
 
-        Debug.Log($"Кількість їжі після 1 і 2 заселення: {bubble.resources.food}"); // 90
+        this.PrintResources("Заселення будинку 2 рази.", bubble);
+
         Debug.Log(this.house_system.BuildingToString(house)); // Будинок<count=2 capacity=3>
 
         // зламати будівлю(населення збережеться, проте не можна заселяти нових людей)
@@ -74,12 +90,12 @@ public class Test : MonoBehaviour
         // якщо не передавати аргумент bubble, то їжа не витратиться
         this.house_system.RepairBuilding(house, bubble);
 
-        Debug.Log($"Кількість їжі після ремонтування: {bubble.resources.food}"); // 88
+        this.PrintResources("Ремонтування будинку.", bubble);
 
         this.house_system.Settle(house, bubble);
         // this.house_system.Settle(house, bubble); // помилка, місце закінчилось
 
-        Debug.Log($"Кількість їжі після 3 заселення: {bubble.resources.food}"); // 83
+        this.PrintResources("Заселення будинку останній раз.", bubble);
 
         // зруйнувати будинок
         this.house_system.Destroy(house, bubble);
@@ -89,6 +105,28 @@ public class Test : MonoBehaviour
 
 
         /// СЕКТОР З ШАХТОЮ
+        
+        
+        this.PrintResources("Сектор з шахтою.", bubble);
+        
+        Building fuel_mine = this.mine_system.Build(2, bubble);
+        Building materials_mine = this.mine_system.Build(3, bubble);
+        
+        this.mine_system.SetMiningMode(fuel_mine, MiningMode.Fuel);
+        this.mine_system.SetMiningMode(materials_mine, MiningMode.Materials);
+
+        this.PrintResources("Будівництво шахт.", bubble);
+        
+        Debug.Log(
+            "Шахти: " +
+            $"{this.mine_system.BuildingToString(fuel_mine)}, " +
+            $"{this.mine_system.BuildingToString(materials_mine)}"
+        );
+
+        this.mine_system.Mine(fuel_mine, bubble);
+        this.mine_system.Mine(materials_mine, bubble);
+
+        this.PrintResources("Видобування в шахтах.", bubble);
     }
 
     void Start()

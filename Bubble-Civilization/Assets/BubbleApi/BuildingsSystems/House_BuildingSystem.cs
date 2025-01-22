@@ -19,6 +19,8 @@
             Building house = this.Build(id, bubble, BuildingType.House);
 
             house.data = new House_BuildingData();
+            bubble.resources.food -= 20;
+            bubble.resources.materials -= 30;
 
             return house;
         }

@@ -1,6 +1,6 @@
 ﻿namespace BubbleApi
 {
-    public enum MineType
+    public enum MiningMode
     {
         Free,
         Fuel,
@@ -9,11 +9,21 @@
 
     public class Mine_BuildingData : BuildingData
     {
-        public MineType type;
+        private byte miningMode;
 
         public Mine_BuildingData() : base()
         {
-            this.type = MineType.Free;
+            this.miningMode = (byte)MiningMode.Free;
+        }
+
+        public void SetMiningMode(MiningMode miningMode)
+        {
+            this.miningMode = (byte)miningMode;
+        }
+
+        public MiningMode GetMiningMode()
+        {
+            return (MiningMode)this.miningMode;
         }
     }
 }
