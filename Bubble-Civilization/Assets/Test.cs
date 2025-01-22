@@ -105,7 +105,7 @@ public class Test : MonoBehaviour
         this.systems.shipDock.SetCapacity(shipDockTransfer, 10);
         this.systems.airPurificationStation.SetCapacity(airPurificationStation, 10);
 
-        // назначення працівників
+        // режими
 
         this.systems.mine.SetMiningMode(fuelMine, MiningMode.Fuel);
         this.systems.mine.SetMiningMode(materialsMine, MiningMode.Materials);
@@ -115,7 +115,7 @@ public class Test : MonoBehaviour
         this.systems.shipDock.SetDockMode(shipDockExploration, DockMode.Exploration);
         this.systems.shipDock.SetDockMode(shipDockTransfer, DockMode.Transfer);
 
-        // режими
+        // заселення жителів і назначення працівників
 
         this.systems.house.Settle(house1, bubble);
         this.systems.house.Settle(house1, bubble);
