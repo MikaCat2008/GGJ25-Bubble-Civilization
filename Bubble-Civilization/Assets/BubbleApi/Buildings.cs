@@ -6,12 +6,10 @@ namespace BubbleApi
     public enum BuildingType
     {
         Empty,
-        Unavaliable,
-        
         House,
-        Mine, // Fuel, Materials
-        GreenHouse, // Food, Oxygen, Materials
-        ShipDock, // Discovery, MaterialCollecting
+        Mine,
+        GreenHouse,
+        ShipDock,
         AirPurification
     }
 
@@ -23,7 +21,7 @@ namespace BubbleApi
         
         public Building()
         {
-            this.type = (byte)BuildingType.Unavaliable;
+            this.type = (byte)BuildingType.Empty;
             this.data = new BuildingData();
         }
 

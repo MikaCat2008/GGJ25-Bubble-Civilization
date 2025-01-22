@@ -13,7 +13,7 @@ namespace BubbleApi
         {
             building.data.requireRepair = true;
         }
-        public virtual void RepairBuilding(Building building, Bubble bubble)
+        public virtual void RepairBuilding(Building building)
         {
             building.data.requireRepair = false;
         }

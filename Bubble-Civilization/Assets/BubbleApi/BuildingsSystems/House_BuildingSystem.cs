@@ -44,16 +44,14 @@
             bubble.resources.food -= 5;
         }
 
-        public override void RepairBuilding(Building building, Bubble bubble)
+        public void RepairBuilding(Building building, Bubble bubble)
         {
-            House_BuildingData data = this.GetData<House_BuildingData>(building, BuildingType.House);
-
             if (bubble.resources.food < 2)
                 throw new BubbleApiException(
                     BubbleApiExceptionType.NotEnoughResources
                 );
 
-            base.RepairBuilding(building, bubble);
+            base.RepairBuilding(building);
             bubble.resources.food -= 2;
         }
 

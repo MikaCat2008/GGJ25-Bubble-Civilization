@@ -64,6 +64,7 @@ public class Test : MonoBehaviour
         // this.house_system.Settle(house, bubble); // помилка, будинок зламаний
 
         // відремонтувати будівлю(потребує 2 їжі, інакше - помилка)
+        // якщо не передавати аргумент bubble, то їжа не витратиться
         this.house_system.RepairBuilding(house, bubble);
 
         Debug.Log($"Кількість їжі після ремонтування: {bubble.resources.food}"); // 88
