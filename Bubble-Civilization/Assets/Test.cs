@@ -1,142 +1,154 @@
-﻿using BubbleApi;
+﻿using System;
+using BubbleApi;
 using UnityEngine;
 
 
 public class Test : MonoBehaviour
 {
     public Storage storage;
-    public BuildingSystem building_system;
-    public House_BuildingSystem house_system;
-    public Mine_BuildingSystem mine_system;
+    public SystemsContainer systems;
+    public BuildingUpdater buildingUpdater;
 
     void Init()
     {
-        // це просто зберігати де завгодно
-
         this.storage = new Storage();
-        this.building_system = new BuildingSystem();
-        this.building_system.storage = this.storage;
-        this.house_system = new House_BuildingSystem();
-        this.house_system.storage = this.storage;
-        this.mine_system = new Mine_BuildingSystem();
-        this.mine_system.storage = this.storage;
+        this.systems = new SystemsContainer(this.storage);
+        this.buildingUpdater = new BuildingUpdater(this.systems);
     }
 
     Bubble CreateBubble()
     {
-        // приклад створення бульбашки
-
         ResourcesContainer resources = new ResourcesContainer(
-            200, 200, 200, 100, 100, 200, 0
+            500, 500, 500
         );
         BuildingsContainer buildings = new BuildingsContainer();
-
+        
         Bubble bubble = new Bubble(resources, buildings);
 
         this.storage.bubbles.Add(bubble);
+        
+        Building house = this.systems.house.Build(0, bubble);
+
+        this.systems.house.SetCapacity(house, 10);
+        this.systems.house.Settle(house, bubble);
+        this.systems.house.Settle(house, bubble);
+        this.systems.house.Settle(house, bubble);
+        this.systems.house.Settle(house, bubble);
+        this.systems.house.Settle(house, bubble);
 
         return bubble;
     }
 
     void PrintResources(string text, Bubble bubble)
     {
-        Debug.Log(text + " " +
-            "Ресурси: " +
+        Debug.Log(text +
+            " Ресурси: " +
             $"Їжа({bubble.resources.food}), " + 
-            $"Щастя({bubble.resources.happiness}), " + 
             $"Кисень({bubble.resources.oxygen}), " + 
             $"Паливо({bubble.resources.fuel}), " + 
             $"Енергія({bubble.resources.energy}), " + 
-            $"Населення({bubble.resources.population}), " + 
+            $"Населення({bubble.resources.freePopulation}/{bubble.resources.population}), " + 
             $"Будівельні матеріали({bubble.resources.materials})"
         );
     }
 
-    void Test_Gameplay()
+    void PrintBuildings(string text, Bubble bubble)
     {
-        Bubble bubble = this.CreateBubble();
+        string[] buildings = new string[bubble.buildings.container.Count];
 
+        int i = 0;
 
-        /// СЕКТОР З БУДИНКОМ
-        this.PrintResources("Сектор з будинком.", bubble);
+        foreach (Building building in bubble.buildings.container.Values)
+        {
+            BuildingSystem system = this.systems.GetBuildingSystem(building.GetBuildingType());
+            buildings[i] = system.BuildingToString(building);
 
+            i += 1;
+        }
 
-        // будівля з айді 1 стала будинком
-        // витратилось 20 їжі і 30 будівельного матеріалу
-
-        Building house = this.house_system.Build(1, bubble);
-
-        this.PrintResources("Будівництво будинку.", bubble);
-
-        // задати максимальне населення 3 людини
-        this.house_system.SetCapacity(house, 3);
-
-        // емуляція кнопки "Заселити", потребує 5 їжі, інакше - помилка
-        this.house_system.Settle(house, bubble);
-        this.house_system.Settle(house, bubble);
-
-        this.PrintResources("Заселення будинку 2 рази.", bubble);
-
-        Debug.Log(this.house_system.BuildingToString(house)); // Будинок<count=2 capacity=3>
-
-        // зламати будівлю(населення збережеться, проте не можна заселяти нових людей)
-        this.building_system.BreakBuilding(house);
-
-        Debug.Log(this.house_system.BuildingToString(house)); // (Зламано) Будинок<count=2 capacity=3>
-        
-        // this.house_system.Settle(house, bubble); // помилка, будинок зламаний
-
-        // відремонтувати будівлю(потребує 2 їжі, інакше - помилка)
-        // якщо не передавати аргумент bubble, то їжа не витратиться
-        this.house_system.RepairBuilding(house, bubble);
-
-        this.PrintResources("Ремонтування будинку.", bubble);
-
-        this.house_system.Settle(house, bubble);
-        // this.house_system.Settle(house, bubble); // помилка, місце закінчилось
-
-        this.PrintResources("Заселення будинку останній раз.", bubble);
-
-        // зруйнувати будинок
-        this.house_system.Destroy(house, bubble);
-
-        Building building = bubble.buildings.GetBuilding(1);
-        Debug.Log(this.building_system.BuildingToString(building)); // Пусто
-
-
-        /// СЕКТОР З ШАХТОЮ
-        
-        
-        this.PrintResources("Сектор з шахтою.", bubble);
-        
-        Building fuel_mine = this.mine_system.Build(2, bubble);
-        Building materials_mine = this.mine_system.Build(3, bubble);
-        
-        this.mine_system.SetMiningMode(fuel_mine, MiningMode.Fuel);
-        this.mine_system.SetMiningMode(materials_mine, MiningMode.Materials);
-
-        this.PrintResources("Будівництво шахт.", bubble);
-        
-        Debug.Log(
-            "Шахти: " +
-            $"{this.mine_system.BuildingToString(fuel_mine)}, " +
-            $"{this.mine_system.BuildingToString(materials_mine)}"
-        );
-
-        this.mine_system.Mine(fuel_mine, bubble);
-        this.mine_system.Mine(materials_mine, bubble);
-
-        this.PrintResources("Видобування в шахтах.", bubble);
+        Debug.Log(text + " Будівлі: " + String.Join(", ", buildings));
     }
 
     void Start()
     {
         this.Init();
-        this.Test_Gameplay();
+        //this.Test_Gameplay();
+
+        Bubble bubble = this.CreateBubble();
+
+        // створення всіх видів будівель
+
+        Building house1 = this.systems.house.Build(1, bubble);
+        Building house2 = this.systems.house.Build(2, bubble);
+        Building fuelMine = this.systems.mine.Build(3, bubble);
+        Building materialsMine = this.systems.mine.Build(4, bubble);
+        Building powerStation = this.systems.powerStation.Build(5, bubble);
+        Building greenHouseFood = this.systems.greenHouse.Build(6, bubble);
+        Building greenHouseOxygen = this.systems.greenHouse.Build(7, bubble);
+        Building greenHouseMaterials = this.systems.greenHouse.Build(8, bubble);
+        Building shipDockExploration = this.systems.shipDock.Build(9, bubble);
+        Building shipDockTransfer = this.systems.shipDock.Build(10, bubble);
+        Building airPurificationStation = this.systems.airPurificationStation.Build(11, bubble);
+
+        // максимальна кількість жителів і працівників
+
+        this.systems.house.SetCapacity(house1, 10);
+        this.systems.house.SetCapacity(house2, 10);
+
+        this.systems.mine.SetCapacity(fuelMine, 10);
+        this.systems.mine.SetCapacity(materialsMine, 10);
+        this.systems.powerStation.SetCapacity(powerStation, 10);
+        this.systems.greenHouse.SetCapacity(greenHouseFood, 10);
+        this.systems.greenHouse.SetCapacity(greenHouseOxygen, 10);
+        this.systems.greenHouse.SetCapacity(greenHouseMaterials, 10);
+        this.systems.shipDock.SetCapacity(shipDockExploration, 10);
+        this.systems.shipDock.SetCapacity(shipDockTransfer, 10);
+        this.systems.airPurificationStation.SetCapacity(airPurificationStation, 10);
+
+        // назначення працівників
+
+        this.systems.mine.SetMiningMode(fuelMine, MiningMode.Fuel);
+        this.systems.mine.SetMiningMode(materialsMine, MiningMode.Materials);
+        this.systems.greenHouse.SetGeneratingMode(greenHouseFood, GeneratingMode.Food);
+        this.systems.greenHouse.SetGeneratingMode(greenHouseOxygen, GeneratingMode.Oxygen);
+        this.systems.greenHouse.SetGeneratingMode(greenHouseMaterials, GeneratingMode.Materials);
+        this.systems.shipDock.SetDockMode(shipDockExploration, DockMode.Exploration);
+        this.systems.shipDock.SetDockMode(shipDockTransfer, DockMode.Transfer);
+
+        // режими
+
+        this.systems.house.Settle(house1, bubble);
+        this.systems.house.Settle(house1, bubble);
+        this.systems.house.Settle(house1, bubble);
+        this.systems.house.Settle(house2, bubble);
+        this.systems.house.Settle(house2, bubble);
+        this.systems.house.Settle(house2, bubble);
+
+        this.systems.mine.Hire(fuelMine, bubble);
+        this.systems.mine.Hire(materialsMine, bubble);
+        this.systems.powerStation.Hire(powerStation, bubble);
+        this.systems.powerStation.Hire(powerStation, bubble);
+        this.systems.greenHouse.Hire(greenHouseFood, bubble);
+        this.systems.greenHouse.Hire(greenHouseOxygen, bubble);
+        this.systems.greenHouse.Hire(greenHouseMaterials, bubble);
+        this.systems.shipDock.Hire(shipDockExploration, bubble);
+        this.systems.shipDock.Hire(shipDockTransfer, bubble);
+        this.systems.airPurificationStation.Hire(airPurificationStation, bubble);
     }
 
-    void Update()
+    void FixedUpdate()
     {
+        foreach (Bubble bubble in this.storage.bubbles)
+        {
+            this.buildingUpdater.Update(bubble);
 
+            if (this.storage.timer.ticks % 60 == 0)
+            {
+                this.PrintResources("", bubble);
+                this.PrintBuildings("", bubble);
+            }
+        }
+
+        this.storage.timer.Tick();
     }
 }

@@ -6,7 +6,10 @@ namespace BubbleApi
     public enum BubbleApiExceptionType
     {
         AnotherBuildingType,
-        HouseIsFull,
+        BuildingIsFull,
+        TooMuchPollution,
+        LackOfOxygen,
+        LackOfPopulation,
         NotEnoughResources,
         IncorrectBuildingData,
         RequireRepair

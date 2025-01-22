@@ -2,12 +2,18 @@
 {
     public class House_BuildingSystem : BuildingSystem
     {
-        //public override void Update(Building building)
-        //{
-        //    House_BuildingData data = this.GetData<House_BuildingData>(building, BuildingType.House);
+        public override void Update(Building building, Bubble bubble)
+        {
+            if (this.storage.timer.ticks % 600 == 0)
+            {
+                if (bubble.resources.food < 1)
+                    throw new BubbleApiException(
+                        BubbleApiExceptionType.NotEnoughResources
+                    );
 
-
-        //}
+                bubble.resources.food -= 1;
+            }
+        }
 
         public Building Build(int id, Bubble bubble)
         {
@@ -48,7 +54,7 @@
 
             if (data.count >= data.capacity)
                 throw new BubbleApiException(
-                    BubbleApiExceptionType.HouseIsFull
+                    BubbleApiExceptionType.BuildingIsFull
                 );
 
             if (bubble.resources.food < 5)
@@ -59,17 +65,19 @@
             data.count += 1;
             bubble.resources.food -= 5;
             bubble.resources.population += 1;
+            bubble.resources.freePopulation += 1;
         }
 
         public void RepairBuilding(Building building, Bubble bubble)
         {
-            if (bubble.resources.food < 2)
+            if (bubble.resources.food < 10 || bubble.resources.materials < 15)
                 throw new BubbleApiException(
                     BubbleApiExceptionType.NotEnoughResources
                 );
 
             this.RepairBuilding(building);
-            bubble.resources.food -= 2;
+            bubble.resources.food -= 10;
+            bubble.resources.materials -= 15;
         }
 
         public override void Destroy(Building building, Bubble bubble)

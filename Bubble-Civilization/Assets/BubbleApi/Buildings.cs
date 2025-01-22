@@ -8,9 +8,10 @@ namespace BubbleApi
         Empty,
         House,
         Mine,
+        PowerStation,
         GreenHouse,
         ShipDock,
-        AirPurification
+        AirPurificationStation
     }
 
     public class Building

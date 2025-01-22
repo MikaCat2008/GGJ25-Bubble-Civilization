@@ -6,8 +6,8 @@
         Fuel,
         Energy,
         Oxygen,
-        Happiness,
         Materials,
+        Pollution,
         Population
     }
 
@@ -17,19 +17,21 @@
         public int fuel;
         public int energy;
         public int oxygen;
-        public int happiness;
         public int materials;
+        public int pollution;
         public int population;
+        public int freePopulation;
 
-        public ResourcesContainer(int food, int fuel, int energy, int oxygen, int happiness, int materials, int population)
+        public ResourcesContainer(int food, int fuel, int materials)
         {
             this.food = food;
             this.fuel = fuel;
-            this.energy = energy;
-            this.oxygen = oxygen;
-            this.happiness = happiness;
+            this.energy = 0;
+            this.oxygen = 100;
             this.materials = materials;
-            this.population = population;
+            this.pollution = 0;
+            this.population = 0;
+            this.freePopulation = 0;
         }
     }
 }

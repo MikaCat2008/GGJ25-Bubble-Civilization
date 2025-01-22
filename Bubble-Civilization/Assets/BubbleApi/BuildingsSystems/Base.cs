@@ -7,7 +7,7 @@ namespace BubbleApi
     {
         public Storage? storage;
 
-        public virtual void Update(Building building) { }
+        public virtual void Update(Building building, Bubble bubble) { }
 
         public Building Build(int id, Bubble bubble, BuildingType type)
         {

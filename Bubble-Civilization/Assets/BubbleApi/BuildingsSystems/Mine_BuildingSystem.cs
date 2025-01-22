@@ -2,12 +2,13 @@
 {
     public class Mine_BuildingSystem : BuildingSystem
     {
-        //public override void Update(Building building)
-        //{
-        //    Mine_BuildingData data = this.GetData<Mine_BuildingData>(building, BuildingType.Mine);
-
-
-        //}
+        public override void Update(Building building, Bubble bubble)
+        {
+            if (this.storage.timer.ticks % 600 == 0)
+            {
+                this.Mine(building, bubble);
+            }
+        }
 
         public Building Build(int id, Bubble bubble)
         {
@@ -23,6 +24,43 @@
             bubble.resources.materials -= 40;
 
             return mine;
+        }
+
+        public void SetMiningMode(Building building, MiningMode miningMode)
+        {
+            Mine_BuildingData data = this.GetData<Mine_BuildingData>(building, BuildingType.Mine);
+
+            data.SetMiningMode(miningMode);
+        }
+
+        public void SetCapacity(Building building, int capacity)
+        {
+            Mine_BuildingData data = this.GetData<Mine_BuildingData>(building, BuildingType.Mine);
+
+            data.capacity = capacity;
+        }
+
+        public void Hire(Building building, Bubble bubble)
+        {
+            Mine_BuildingData data = this.GetData<Mine_BuildingData>(building, BuildingType.Mine);
+
+            if (data.requireRepair)
+                throw new BubbleApiException(
+                    BubbleApiExceptionType.RequireRepair
+                );
+
+            if (data.count >= data.capacity)
+                throw new BubbleApiException(
+                    BubbleApiExceptionType.BuildingIsFull
+                );
+
+            if (bubble.resources.freePopulation < 1)
+                throw new BubbleApiException(
+                    BubbleApiExceptionType.NotEnoughResources
+                );
+
+            data.count += 1;
+            bubble.resources.freePopulation -= 1;
         }
 
         public void Mine(Building building, Bubble bubble)
@@ -47,21 +85,35 @@
 
             if (miningMode == MiningMode.Fuel)
             {
-                bubble.resources.fuel += 2;
+                bubble.resources.fuel += 2 * data.count;
             }
             else if (miningMode == MiningMode.Materials)
             {
-                bubble.resources.materials += 2;
+                bubble.resources.materials += 2 * data.count;
             }
 
             bubble.resources.food -= 1;
+            bubble.resources.pollution += 1;
         }
 
-        public void SetMiningMode(Building building, MiningMode miningMode)
+        public void RepairBuilding(Building building, Bubble bubble)
+        {
+            if (bubble.resources.food < 12 || bubble.resources.materials < 20)
+                throw new BubbleApiException(
+                    BubbleApiExceptionType.NotEnoughResources
+                );
+
+            this.RepairBuilding(building);
+            bubble.resources.food -= 12;
+            bubble.resources.materials -= 20;
+        }
+
+        public override void Destroy(Building building, Bubble bubble)
         {
             Mine_BuildingData data = this.GetData<Mine_BuildingData>(building, BuildingType.Mine);
 
-            data.SetMiningMode(miningMode);
+            bubble.resources.freePopulation += data.count;
+            base.Destroy(building, bubble);
         }
 
         public override string BuildingToString(Building building)
@@ -73,7 +125,7 @@
             string modeText = this.MiningModeToString(miningMode);
             string brokenText = this.BrokenText(building);
 
-            return brokenText + $"Шахта<режим={modeText}>";
+            return brokenText + $"Шахта<режим={modeText} працівники={data.count}/{data.capacity}>";
         }
 
         private string MiningModeToString(MiningMode miningMode)
@@ -82,7 +134,7 @@
                 return "вільна";
             if (miningMode == MiningMode.Fuel)
                 return "паливо";
-            return "будівальні матеріали";
+            return "будівельні матеріали";
         }
     }
 }
