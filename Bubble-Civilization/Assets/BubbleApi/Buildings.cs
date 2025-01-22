@@ -15,20 +15,16 @@ namespace BubbleApi
 
     public class Building
     {
+        public int id;
         public BuildingData data;
     
         private byte type;
         
-        public Building()
+        public Building(int id)
         {
+            this.id = id;
             this.type = (byte)BuildingType.Empty;
             this.data = new BuildingData();
-        }
-
-        public Building(BuildingType type, BuildingData data)
-        {
-            this.type = (byte)type;
-            this.data = data;
         }
 
         public BuildingType GetBuildingType()
@@ -51,15 +47,15 @@ namespace BubbleApi
             this.container = new Dictionary<int, Building>();
         }
 
-        public Building GetBuilding(byte id)
+        public Building GetBuilding(int id)
         {
             if (this.container.TryGetValue(id, out Building building))
                 return building;
 
-            return new Building();
+            return new Building(id);
         }
 
-        public void SetBuildingType(byte id, BuildingType type)
+        public void SetBuildingType(int id, BuildingType type)
         {
             if (this.container.TryGetValue(id, out Building building))
             {
@@ -68,20 +64,11 @@ namespace BubbleApi
             }
             else 
             {
-                building = new Building(type, this.CreateBuildingData(type));
+                building = new Building(id);
+                building.SetBuildingType(type);
 
                 this.container.Add(id, building);
             }
-        }
-
-        private BuildingData CreateBuildingData(BuildingType type)
-        {
-            if (type == BuildingType.House)
-                return new House_BuildingData();
-            if (type == BuildingType.Mine)
-                return new Mine_BuildingData();
-
-            return new BuildingData();
         }
     }
 }

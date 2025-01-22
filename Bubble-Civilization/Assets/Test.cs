@@ -42,9 +42,16 @@ public class Test : MonoBehaviour
     {
         Bubble bubble = this.CreateBubble();
 
-        // будівля з айді 0 тепер стала будинком
-        bubble.buildings.SetBuildingType(0, BuildingType.House);
-        Building house = bubble.buildings.GetBuilding(0);
+
+        /// СЕКТОР З БУДИНКОМ
+
+
+        // будівля з айді 1 стала будинком
+        // витратилось 30 будівельного матеріалу і 20 їжі
+
+        Building house = this.house_system.Build(1, bubble);
+
+        Debug.Log($"Кількість їжі після 1 і 2 заселення: {bubble.resources.food}"); // 90
 
         // задати максимальне населення 3 людини
         this.house_system.SetCapacity(house, 3);
@@ -75,10 +82,13 @@ public class Test : MonoBehaviour
         Debug.Log($"Кількість їжі після 3 заселення: {bubble.resources.food}"); // 83
 
         // зруйнувати будинок
-        bubble.buildings.SetBuildingType(0, BuildingType.Empty);
-        Building building = bubble.buildings.GetBuilding(0);
+        this.house_system.Destroy(house, bubble);
 
+        Building building = bubble.buildings.GetBuilding(1);
         Debug.Log(this.building_system.BuildingToString(building)); // Пусто
+
+
+        /// СЕКТОР З ШАХТОЮ
     }
 
     void Start()
