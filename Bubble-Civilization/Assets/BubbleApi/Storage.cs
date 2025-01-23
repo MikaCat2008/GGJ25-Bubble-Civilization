@@ -6,17 +6,15 @@ namespace BubbleApi
     public class Timer
     {
         public int ticks;
-        public byte speed;
 
         public Timer()
         {
             this.ticks = 0;
-            this.speed = 0;
         }
 
         public void Tick()
         {
-            this.ticks += this.speed;
+            this.ticks += 1;
         }
     }
 

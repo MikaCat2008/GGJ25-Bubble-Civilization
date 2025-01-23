@@ -2,7 +2,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using BubbleApi;
+using static System.Net.Mime.MediaTypeNames;
 
 
 
@@ -125,8 +125,6 @@ public class GameplayTimeManager : MonoBehaviour
     {
         isPaused = true;
         isRunning = false;
-     
-        GlobalStorage.storage.timer.speed = 0;
     }
 
     public void Resume()
@@ -167,23 +165,17 @@ public class GameplayTimeManager : MonoBehaviour
     {
         currentDayDelay = DayDelaySpeedOne;
         Resume();
-     
-        GlobalStorage.storage.timer.speed = 1;
     }
 
     public void SetSpeedTwo()
     {
         currentDayDelay = DayDelaySpeedTwo;
         Resume();
-     
-        GlobalStorage.storage.timer.speed = 2;
     }
 
     public void SetSpeedThree()
     {
         currentDayDelay = DayDelaySpeedThree;
         Resume();
-        
-        GlobalStorage.storage.timer.speed = 4;
     }
 }
