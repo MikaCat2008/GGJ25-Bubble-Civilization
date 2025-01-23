@@ -1,4 +1,5 @@
-﻿using BubbleApi;
+﻿using System;
+using BubbleApi;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -22,15 +23,7 @@ public class MainMenu : MonoBehaviour
 
         GlobalStorage.buildingUpdater.OnBuildingDone += (Building building, Bubble bubble) =>
         {
-            House_BuildingSystem houseSystem = GlobalStorage.systems.house;
 
-            Debug.Log($"Будівля " + houseSystem.BuildingToString(building) + " добудована.");
-        };
-        GlobalStorage.buildingUpdater.OnBreak += (Building building, Bubble bubble) =>
-        {
-            House_BuildingSystem houseSystem = GlobalStorage.systems.house;
-
-            Debug.Log($"Будівля " + houseSystem.BuildingToString(building) + " добудована.");
         };
     }
 

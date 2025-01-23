@@ -38,7 +38,7 @@ namespace BubbleApi
 
         private bool UpdateBreaking(Building building, Bubble bubble)
         {
-            bool status = new Random().Next(0, 36000) == 0;
+            bool status = new Random().Next(0, 36000 / GlobalStorage.storage.timer.speed) == 0;
 
             if (status)
             {
@@ -91,9 +91,9 @@ namespace BubbleApi
             {
                 BuildingTimeout timeout = buildingQueue[i];
 
-                timeout.timeout -= 1;
+                timeout.timeout -= GlobalStorage.storage.timer.speed;
 
-                if (timeout.timeout == 0)
+                if (timeout.timeout <= 0)
                 {
                     toDeleteSet.Add(i);
 

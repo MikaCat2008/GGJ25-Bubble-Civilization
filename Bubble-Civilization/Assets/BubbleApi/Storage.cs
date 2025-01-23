@@ -6,7 +6,7 @@ namespace BubbleApi
     public class Timer
     {
         public int ticks;
-        public byte speed;
+        public int speed;
 
         public Timer()
         {
