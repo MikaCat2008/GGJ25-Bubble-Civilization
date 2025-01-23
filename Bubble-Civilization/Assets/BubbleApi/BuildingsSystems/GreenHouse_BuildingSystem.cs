@@ -10,18 +10,25 @@
             }
         }
 
-        public Building Build(int id, Bubble bubble)
+        public void StartBuilding(int id, Bubble bubble)
         {
             if (bubble.resources.food < 5 || bubble.resources.materials < 5)
                 throw new BubbleApiException(
                     BubbleApiExceptionType.NotEnoughResources
                 );
 
+            this.buildingUpdater.StartBuilding(id, bubble, BuildingType.GreenHouse, 300);
+
+            bubble.resources.food -= 5;
+            bubble.resources.materials -= 5;
+            bubble.buildings.SetBuildingType(id, BuildingType.Building);
+        }
+
+        public override Building Build(int id, Bubble bubble)
+        {
             Building greenHouse = this.Build(id, bubble, BuildingType.GreenHouse);
 
             greenHouse.data = new GreenHouse_BuildingData();
-            bubble.resources.food -= 5;
-            bubble.resources.materials -= 5;
 
             return greenHouse;
         }

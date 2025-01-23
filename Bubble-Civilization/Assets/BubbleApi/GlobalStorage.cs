@@ -6,6 +6,7 @@
         public static SystemsContainer systems;
         public static BuildingUpdater buildingUpdater;
 
+
         private static bool initialized = false;
 
         public static bool Initialize()

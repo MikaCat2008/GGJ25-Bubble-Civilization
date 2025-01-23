@@ -10,18 +10,25 @@
             }
         }
 
-        public Building Build(int id, Bubble bubble)
+        public void StartBuilding(int id, Bubble bubble)
         {
             if (bubble.resources.food < 10 || bubble.resources.materials < 15)
                 throw new BubbleApiException(
                     BubbleApiExceptionType.NotEnoughResources
                 );
 
+            this.buildingUpdater.StartBuilding(id, bubble, BuildingType.AirPurificationStation, 600);
+
+            bubble.resources.food -= 10;
+            bubble.resources.materials -= 15;
+            bubble.buildings.SetBuildingType(id, BuildingType.Building);
+        }
+
+        public override Building Build(int id, Bubble bubble)
+        {
             Building airPurificationStation = this.Build(id, bubble, BuildingType.AirPurificationStation);
 
             airPurificationStation.data = new AirPurificationStation_BuildingData();
-            bubble.resources.food -= 10;
-            bubble.resources.materials -= 15;
 
             return airPurificationStation;
         }

@@ -15,18 +15,25 @@
             }
         }
 
-        public Building Build(int id, Bubble bubble)
+        public void StartBuilding(int id, Bubble bubble)
         {
-            if (bubble.resources.food < 30 || bubble.resources.materials < 100)
+            if (bubble.resources.food < 20 || bubble.resources.materials < 50)
                 throw new BubbleApiException(
                     BubbleApiExceptionType.NotEnoughResources
                 );
 
+            this.buildingUpdater.StartBuilding(id, bubble, BuildingType.ShipDock, 300);
+
+            bubble.resources.food -= 20;
+            bubble.resources.materials -= 50;
+            bubble.buildings.SetBuildingType(id, BuildingType.Building);
+        }
+
+        public override Building Build(int id, Bubble bubble)
+        {
             Building shipDock = this.Build(id, bubble, BuildingType.ShipDock);
 
             shipDock.data = new ShipDock_BuildingData();
-            bubble.resources.food -= 30;
-            bubble.resources.materials -= 100;
 
             return shipDock;
         }

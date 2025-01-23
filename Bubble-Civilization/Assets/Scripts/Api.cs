@@ -6,7 +6,7 @@ public class Api : MonoBehaviour
 {
     public void FixedUpdate()
     {
-        if (GlobalStorage.storage.timer.speed != 0)
+        if (GlobalStorage.storage.timer.speed == 0)
             return;
 
         foreach (Bubble bubble in GlobalStorage.storage.bubbles.Values)

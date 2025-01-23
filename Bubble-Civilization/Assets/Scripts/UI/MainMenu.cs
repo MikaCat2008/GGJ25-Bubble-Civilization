@@ -14,11 +14,24 @@ public class MainMenu : MonoBehaviour
     public void Start()
     {
         GlobalStorage.Initialize();
+        GlobalStorage.storage.timer.speed = 1;
 
-        Building house = GlobalStorage.storage.bubbles[0].buildings.GetBuilding(0);
-        House_BuildingSystem houseSystem = GlobalStorage.systems.house;
+        GlobalStorage.systems.house.StartBuilding(
+            0, GlobalStorage.storage.bubbles[0]
+        );
 
-        Debug.Log(houseSystem.BuildingToString(house));
+        GlobalStorage.buildingUpdater.OnBuildingDone += (Building building, Bubble bubble) =>
+        {
+            House_BuildingSystem houseSystem = GlobalStorage.systems.house;
+
+            Debug.Log($"Будівля " + houseSystem.BuildingToString(building) + " добудована.");
+        };
+        GlobalStorage.buildingUpdater.OnBreak += (Building building, Bubble bubble) =>
+        {
+            House_BuildingSystem houseSystem = GlobalStorage.systems.house;
+
+            Debug.Log($"Будівля " + houseSystem.BuildingToString(building) + " добудована.");
+        };
     }
 
     public void menuStrart()

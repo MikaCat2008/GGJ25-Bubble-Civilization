@@ -10,18 +10,25 @@
             }
         }
 
-        public Building Build(int id, Bubble bubble)
+        public void StartBuilding(int id, Bubble bubble)
         {
             if (bubble.resources.food < 25 || bubble.resources.materials < 40)
                 throw new BubbleApiException(
                     BubbleApiExceptionType.NotEnoughResources
                 );
 
+            this.buildingUpdater.StartBuilding(id, bubble, BuildingType.Mine, 300);
+
+            bubble.resources.food -= 25;
+            bubble.resources.materials -= 40;
+            bubble.buildings.SetBuildingType(id, BuildingType.Building);
+        }
+
+        public override Building Build(int id, Bubble bubble)
+        {
             Building mine = this.Build(id, bubble, BuildingType.Mine);
 
             mine.data = new Mine_BuildingData();
-            bubble.resources.food -= 25;
-            bubble.resources.materials -= 40;
 
             return mine;
         }

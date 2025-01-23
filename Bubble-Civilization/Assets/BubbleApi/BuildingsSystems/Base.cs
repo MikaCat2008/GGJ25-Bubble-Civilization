@@ -5,7 +5,17 @@ namespace BubbleApi
 {
     public class BuildingSystem : System
     {
+        public BuildingUpdater buildingUpdater
+        {
+            get { return GlobalStorage.buildingUpdater; }
+        }
+
         public virtual void Update(Building building, Bubble bubble) { }
+
+        public virtual Building Build(int id, Bubble bubble) 
+        {
+            return new Building(id);
+        }
 
         public Building Build(int id, Bubble bubble, BuildingType type)
         {

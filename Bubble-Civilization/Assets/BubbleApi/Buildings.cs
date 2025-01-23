@@ -6,6 +6,7 @@ namespace BubbleApi
     public enum BuildingType
     {
         Empty,
+        Building,
         House,
         Mine,
         PowerStation,
