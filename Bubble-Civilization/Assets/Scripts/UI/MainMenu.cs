@@ -1,7 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using BubbleApi;
 using UnityEngine;
 using UnityEngine.UI;
+
 
 public class MainMenu : MonoBehaviour
 {
@@ -11,9 +11,18 @@ public class MainMenu : MonoBehaviour
 
     //private GameObject MainMenuGO;
 
+    public void Start()
+    {
+        GlobalStorage.Initialize();
+
+        Building house = GlobalStorage.storage.bubbles[0].buildings.GetBuilding(0);
+        House_BuildingSystem houseSystem = GlobalStorage.systems.house;
+
+        Debug.Log(houseSystem.BuildingToString(house));
+    }
+
     public void menuStrart()
     {
-        
         this.gameObject.SetActive(false);
         //ActualGame.SetActive(true);
     }
@@ -22,7 +31,6 @@ public class MainMenu : MonoBehaviour
     {
         AudioSourceGO.volume = volumeSlider.value;
     }
-
 
     public void menuQuit()
     {

@@ -25,8 +25,8 @@ public class Test : MonoBehaviour
         
         Bubble bubble = new Bubble(resources, buildings);
 
-        this.storage.bubbles.Add(bubble);
-        
+        this.storage.bubbles.Add(0, bubble);
+
         Building house = this.systems.house.Build(0, bubble);
 
         this.systems.house.SetCapacity(house, 10);
@@ -71,6 +71,8 @@ public class Test : MonoBehaviour
 
     void Start()
     {
+        return;
+
         this.Init();
         //this.Test_Gameplay();
 
@@ -134,21 +136,5 @@ public class Test : MonoBehaviour
         this.systems.shipDock.Hire(shipDockExploration, bubble);
         this.systems.shipDock.Hire(shipDockTransfer, bubble);
         this.systems.airPurificationStation.Hire(airPurificationStation, bubble);
-    }
-
-    void FixedUpdate()
-    {
-        foreach (Bubble bubble in this.storage.bubbles)
-        {
-            this.buildingUpdater.Update(bubble);
-
-            if (this.storage.timer.ticks % 60 == 0)
-            {
-                this.PrintResources("", bubble);
-                this.PrintBuildings("", bubble);
-            }
-        }
-
-        this.storage.timer.Tick();
     }
 }

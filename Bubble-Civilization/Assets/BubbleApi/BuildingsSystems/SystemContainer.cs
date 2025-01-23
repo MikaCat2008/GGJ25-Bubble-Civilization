@@ -2,6 +2,7 @@
 {
     public class SystemsContainer
     {
+        public BubbleSystem bubble;
         public BuildingSystem building;
         public House_BuildingSystem house;
         public Mine_BuildingSystem mine;
@@ -12,20 +13,14 @@
 
         public SystemsContainer(Storage storage)
         {
+            this.bubble = new BubbleSystem();
             this.building = new BuildingSystem();
-            this.building.storage = storage;
             this.house = new House_BuildingSystem();
-            this.house.storage = storage;
             this.mine = new Mine_BuildingSystem();
-            this.mine.storage = storage;
             this.powerStation = new PowerStation_BuildingSystem();
-            this.powerStation.storage = storage;
             this.greenHouse = new GreenHouse_BuildingSystem();
-            this.greenHouse.storage = storage;
             this.shipDock = new ShipDock_BuildingSystem();
-            this.shipDock.storage = storage;
             this.airPurificationStation = new AirPurificationStation_BuildingSystem();
-            this.airPurificationStation.storage = storage;
         }
 
         public BuildingSystem GetBuildingSystem(BuildingType type)

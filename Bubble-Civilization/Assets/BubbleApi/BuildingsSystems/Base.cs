@@ -3,10 +3,8 @@
 
 namespace BubbleApi
 {
-    public class BuildingSystem
+    public class BuildingSystem : System
     {
-        public Storage? storage;
-
         public virtual void Update(Building building, Bubble bubble) { }
 
         public Building Build(int id, Bubble bubble, BuildingType type)
