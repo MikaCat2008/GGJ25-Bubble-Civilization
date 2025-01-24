@@ -24,7 +24,14 @@
             houseSystem.Settle(house, bubble);
             houseSystem.Settle(house, bubble);
 
+            this.storage.timer.CreateInterval(5 * 60, () => this.RemoveOxygen(bubble));
+
             return bubble;
+        }
+
+        private void RemoveOxygen(Bubble bubble)
+        {
+            bubble.resources.oxygen -= 1;
         }
     }
 }
