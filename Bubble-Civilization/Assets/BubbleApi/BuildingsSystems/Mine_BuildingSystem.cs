@@ -2,25 +2,16 @@
 {
     public class Mine_BuildingSystem : BuildingSystem
     {
-        public override void Update(Building building, Bubble bubble)
+        public override void OnUpdate(Building building, Bubble bubble)
         {
-            if (this.storage.timer.ticks % 600 == 0)
-            {
-                this.Mine(building, bubble);
-            }
+            this.Mine(building, bubble);
         }
 
         public void StartBuilding(int id, Bubble bubble)
         {
-            if (bubble.resources.food < 25 || bubble.resources.materials < 40)
-                throw new BubbleApiException(
-                    BubbleApiExceptionType.NotEnoughResources
-                );
+            this.actionUpdater.ProcessAction(bubble, ActionType.Mine_Build);
 
-            this.buildingUpdater.StartBuilding(id, bubble, BuildingType.Mine, 300);
-
-            bubble.resources.food -= 25;
-            bubble.resources.materials -= 40;
+            this.buildingUpdater.StartBuilding(id, bubble, BuildingType.Mine);
             bubble.buildings.SetBuildingType(id, BuildingType.Building);
         }
 
@@ -61,13 +52,9 @@
                     BubbleApiExceptionType.BuildingIsFull
                 );
 
-            if (bubble.resources.freePopulation < 1)
-                throw new BubbleApiException(
-                    BubbleApiExceptionType.NotEnoughResources
-                );
+            this.actionUpdater.ProcessAction(bubble, ActionType.Mine_Hire);
 
             data.count += 1;
-            bubble.resources.freePopulation -= 1;
         }
 
         public void Mine(Building building, Bubble bubble)
@@ -79,14 +66,7 @@
                     BubbleApiExceptionType.RequireRepair
                 );
 
-            if (bubble.resources.food < 1)
-            {
-                this.BreakBuilding(building);
-
-                throw new BubbleApiException(
-                    BubbleApiExceptionType.NotEnoughResources
-                );
-            }
+            this.actionUpdater.ProcessAction(bubble, ActionType.Mine_Update, building);
 
             MiningMode miningMode = data.GetMiningMode();
 
@@ -98,21 +78,13 @@
             {
                 bubble.resources.materials += 2 * data.count;
             }
-
-            bubble.resources.food -= 1;
-            bubble.resources.pollution += 1;
         }
 
         public void RepairBuilding(Building building, Bubble bubble)
         {
-            if (bubble.resources.food < 12 || bubble.resources.materials < 20)
-                throw new BubbleApiException(
-                    BubbleApiExceptionType.NotEnoughResources
-                );
+            this.actionUpdater.ProcessAction(bubble, ActionType.Mine_Repair);
 
             this.RepairBuilding(building);
-            bubble.resources.food -= 12;
-            bubble.resources.materials -= 20;
         }
 
         public override void Destroy(Building building, Bubble bubble)
@@ -132,7 +104,7 @@
             string modeText = this.MiningModeToString(miningMode);
             string brokenText = this.BrokenText(building);
 
-            return brokenText + $"Шахта<режим={modeText} працівники={data.count}/{data.capacity}>";
+            return brokenText + $"Шахта[{building.id}]<режим={modeText} працівники={data.count}/{data.capacity}>";
         }
 
         private string MiningModeToString(MiningMode miningMode)

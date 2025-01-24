@@ -28,17 +28,19 @@ namespace BubbleApi
         public SystemsContainer systems;
         public event BuildingEventHandler OnBuildingDone;
         public event BuildingEventHandler OnBreak;
+        public Dictionary<BuildingType, BuildingInfo> buildingsInfo;
         public List<BuildingTimeout> buildingQueue;
 
         public BuildingUpdater(SystemsContainer systems)
         {
             this.systems = systems;
+            this.buildingsInfo = new Dictionary<BuildingType, BuildingInfo>();
             this.buildingQueue = new List<BuildingTimeout>();
         }
 
         private bool UpdateBreaking(Building building, Bubble bubble)
         {
-            bool status = new Random().Next(0, 1080 / GlobalStorage.storage.timer.speed) == 0;
+            bool status = new Random().Next(0, 108000 / GlobalStorage.storage.timer.speed) == 0;
 
             if (status)
             {
@@ -53,19 +55,18 @@ namespace BubbleApi
         {
             BuildingType type = building.GetBuildingType();
 
-            if (type == BuildingType.Empty)
+            if (type == BuildingType.Empty || type == BuildingType.Building)
                 return;
 
             if (this.UpdateBreaking(building, bubble))
                 return;
-
-            BuildingSystem system = this.systems.GetBuildingSystem(type);
-            system.Update(building, bubble);
         }
 
-        public void StartBuilding(int id, Bubble bubble, BuildingType type, int timeout)
+        public void StartBuilding(int id, Bubble bubble, BuildingType type)
         {
-            this.buildingQueue.Add(new BuildingTimeout(id, bubble, type, timeout));
+            this.buildingQueue.Add(
+                new BuildingTimeout(id, bubble, type, this.buildingsInfo[type].buildingTime)
+            );
         }
 
         public void Update(Bubble bubble)

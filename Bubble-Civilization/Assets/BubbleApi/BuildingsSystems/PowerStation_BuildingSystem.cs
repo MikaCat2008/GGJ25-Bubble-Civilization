@@ -2,25 +2,16 @@
 {
     public class PowerStation_BuildingSystem : BuildingSystem
     {
-        public override void Update(Building building, Bubble bubble)
+        public override void OnUpdate(Building building, Bubble bubble)
         {
-            if (this.storage.timer.ticks % 300 == 0)
-            {
-                this.GenerateElectricity(building, bubble);
-            }
+            this.GenerateElectricity(building, bubble);
         }
 
         public void StartBuilding(int id, Bubble bubble)
         {
-            if (bubble.resources.food < 20 || bubble.resources.materials < 50)
-                throw new BubbleApiException(
-                    BubbleApiExceptionType.NotEnoughResources
-                );
-
-            this.buildingUpdater.StartBuilding(id, bubble, BuildingType.PowerStation, 300);
-
-            bubble.resources.food -= 20;
-            bubble.resources.materials -= 50;
+            this.actionUpdater.ProcessAction(bubble, ActionType.PowerStation_Build);
+            
+            this.buildingUpdater.StartBuilding(id, bubble, BuildingType.PowerStation);
             bubble.buildings.SetBuildingType(id, BuildingType.Building);
         }
 
@@ -54,13 +45,9 @@
                     BubbleApiExceptionType.BuildingIsFull
                 );
 
-            if (bubble.resources.freePopulation < 1)
-                throw new BubbleApiException(
-                    BubbleApiExceptionType.NotEnoughResources
-                );
+            this.actionUpdater.ProcessAction(bubble, ActionType.PowerStation_Hire);
 
             data.count += 1;
-            bubble.resources.freePopulation -= 1;
         }
 
         public void GenerateElectricity(Building building, Bubble bubble)
@@ -72,30 +59,16 @@
                     BubbleApiExceptionType.RequireRepair
                 );
 
-            if (bubble.resources.food < 1)
-            {
-                this.BreakBuilding(building);
-
-                throw new BubbleApiException(
-                    BubbleApiExceptionType.NotEnoughResources
-                );
-            }
+            this.actionUpdater.ProcessAction(bubble, ActionType.PowerStation_Build, building);
 
             bubble.resources.fuel += 2 * data.count;
-            bubble.resources.food -= 1;
-            bubble.resources.pollution += 1;
         }
 
         public void RepairBuilding(Building building, Bubble bubble)
         {
-            if (bubble.resources.food < 10 || bubble.resources.materials < 25)
-                throw new BubbleApiException(
-                    BubbleApiExceptionType.NotEnoughResources
-                );
-
+            this.actionUpdater.ProcessAction(bubble, ActionType.PowerStation_Repair);
+            
             this.RepairBuilding(building);
-            bubble.resources.food -= 10;
-            bubble.resources.materials -= 25;
         }
 
         public override void Destroy(Building building, Bubble bubble)
@@ -112,7 +85,7 @@
 
             string brokenText = this.BrokenText(building);
 
-            return brokenText + $"Електростанція<працівники={data.count}/{data.capacity}>";
+            return brokenText + $"Електростанція[{building.id}]<працівники={data.count}/{data.capacity}>";
         }
     }
 }

@@ -2,25 +2,16 @@
 {
     public class GreenHouse_BuildingSystem : BuildingSystem
     {
-        public override void Update(Building building, Bubble bubble)
+        public override void OnUpdate(Building building, Bubble bubble)
         {
-            if (this.storage.timer.ticks % 300 == 0)
-            {
-                this.Generate(building, bubble);
-            }
+            this.Generate(building, bubble);
         }
 
         public void StartBuilding(int id, Bubble bubble)
         {
-            if (bubble.resources.food < 5 || bubble.resources.materials < 5)
-                throw new BubbleApiException(
-                    BubbleApiExceptionType.NotEnoughResources
-                );
+            this.actionUpdater.ProcessAction(bubble, ActionType.GreenHouse_Build);
 
-            this.buildingUpdater.StartBuilding(id, bubble, BuildingType.GreenHouse, 300);
-
-            bubble.resources.food -= 5;
-            bubble.resources.materials -= 5;
+            this.buildingUpdater.StartBuilding(id, bubble, BuildingType.GreenHouse);
             bubble.buildings.SetBuildingType(id, BuildingType.Building);
         }
 
@@ -61,13 +52,9 @@
                     BubbleApiExceptionType.BuildingIsFull
                 );
 
-            if (bubble.resources.freePopulation < 1)
-                throw new BubbleApiException(
-                    BubbleApiExceptionType.NotEnoughResources
-                );
+            this.actionUpdater.ProcessAction(bubble, ActionType.GreenHouse_Hire);
 
             data.count += 1;
-            bubble.resources.freePopulation -= 1;
         }
 
         public void Generate(Building building, Bubble bubble)
@@ -79,14 +66,7 @@
                     BubbleApiExceptionType.RequireRepair
                 );
 
-            if (bubble.resources.energy < 1)
-            {
-                this.BreakBuilding(building);
-
-                throw new BubbleApiException(
-                    BubbleApiExceptionType.NotEnoughResources
-                );
-            }
+            this.actionUpdater.ProcessAction(bubble, ActionType.GreenHouse_Update, building);
 
             GeneratingMode generatingMode = data.GetGeneratingMode();
 
@@ -102,20 +82,13 @@
             {
                 bubble.resources.materials += data.count;
             }
-
-            bubble.resources.energy -= 1;
         }
 
         public void RepairBuilding(Building building, Bubble bubble)
         {
-            if (bubble.resources.food < 2 || bubble.resources.materials < 2)
-                throw new BubbleApiException(
-                    BubbleApiExceptionType.NotEnoughResources
-                );
+            this.actionUpdater.ProcessAction(bubble, ActionType.GreenHouse_Repair);
 
             this.RepairBuilding(building);
-            bubble.resources.food -= 2;
-            bubble.resources.materials -= 2;
         }
 
         public override void Destroy(Building building, Bubble bubble)
@@ -135,7 +108,7 @@
             string modeText = this.GeneratingModeToString(generatingMode);
             string brokenText = this.BrokenText(building);
 
-            return brokenText + $"Теплиця<режим={modeText} працівники={data.count}/{data.capacity}>";
+            return brokenText + $"Теплиця[{building.id}]<режим={modeText} працівники={data.count}/{data.capacity}>";
         }
 
         private string GeneratingModeToString(GeneratingMode generatingMode)

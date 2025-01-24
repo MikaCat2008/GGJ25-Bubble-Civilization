@@ -1,12 +1,14 @@
-using BubbleApi;
+﻿using BubbleApi;
 using UnityEngine;
 
 
 public class Api : MonoBehaviour
 {
-    public void Start()
+    public void Awake()
     {
         GlobalStorage.Initialize();
+
+        Debug.Log(GlobalStorage.storage.bubbles[0].buildings.container[0].GetBuildingType());
 
         GlobalStorage.systems.house.StartBuilding(
             0, GlobalStorage.storage.bubbles[0]
@@ -14,7 +16,15 @@ public class Api : MonoBehaviour
 
         GlobalStorage.buildingUpdater.OnBuildingDone += (Building building, Bubble bubble) =>
         {
+            BuildingSystem system = GlobalStorage.systems.GetBuildingSystem(building.GetBuildingType());
 
+            Debug.Log($"Будівля {system.BuildingToString(building)} добудувалась !");
+        };
+        GlobalStorage.buildingUpdater.OnBreak += (Building building, Bubble bubble) =>
+        {
+            BuildingSystem system = GlobalStorage.systems.GetBuildingSystem(building.GetBuildingType());
+
+            Debug.Log($"Будівля {system.BuildingToString(building)} зламалась !");
         };
     }
 

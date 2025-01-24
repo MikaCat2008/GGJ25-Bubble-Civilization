@@ -31,18 +31,8 @@ public class TimePanel : MonoBehaviour
     {
         this.dateTime = new DateTime(1312, 1, 1);
         this.currentActiveButtonText = this.pauseButtonText;
-    }
 
-    private void FixedUpdate()
-    {
-        int speed = GlobalStorage.storage.timer.speed,
-            ticks = GlobalStorage.storage.timer.ticks;
-
-        if (speed == 0)
-            return;
-
-        if (ticks % 60 < speed)
-            this.UpdateDate();
+        GlobalStorage.storage.timer.CreateInterval(60, this.UpdateDate);
     }
 
     private void UpdateDate()

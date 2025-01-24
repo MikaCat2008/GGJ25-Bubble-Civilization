@@ -2,30 +2,16 @@
 {
     public class House_BuildingSystem : BuildingSystem
     {
-        public override void Update(Building building, Bubble bubble)
+        public override void OnUpdate(Building building, Bubble bubble)
         {
-            if (this.storage.timer.ticks % 600 == 0)
-            {
-                if (bubble.resources.food < 1)
-                    throw new BubbleApiException(
-                        BubbleApiExceptionType.NotEnoughResources
-                    );
-
-                bubble.resources.food -= 1;
-            }
+            this.actionUpdater.ProcessAction(bubble, ActionType.House_Update, building);
         }
 
         public void StartBuilding(int id, Bubble bubble)
         {
-            if (bubble.resources.food < 20 || bubble.resources.materials < 30)
-                throw new BubbleApiException(
-                    BubbleApiExceptionType.NotEnoughResources
-                );
+            this.actionUpdater.ProcessAction(bubble, ActionType.House_Build);
 
-            this.buildingUpdater.StartBuilding(id, bubble, BuildingType.House, 300);
-
-            bubble.resources.food -= 20;
-            bubble.resources.materials -= 30;
+            this.buildingUpdater.StartBuilding(id, bubble, BuildingType.House);
             bubble.buildings.SetBuildingType(id, BuildingType.Building);
         }
 
@@ -64,27 +50,16 @@
                     BubbleApiExceptionType.BuildingIsFull
                 );
 
-            if (bubble.resources.food < 5)
-                throw new BubbleApiException(
-                    BubbleApiExceptionType.NotEnoughResources
-                );
+            this.actionUpdater.ProcessAction(bubble, ActionType.House_Settle);
 
             data.count += 1;
-            bubble.resources.food -= 5;
-            bubble.resources.population += 1;
-            bubble.resources.freePopulation += 1;
         }
 
         public void RepairBuilding(Building building, Bubble bubble)
         {
-            if (bubble.resources.food < 10 || bubble.resources.materials < 15)
-                throw new BubbleApiException(
-                    BubbleApiExceptionType.NotEnoughResources
-                );
+            this.actionUpdater.ProcessAction(bubble, ActionType.House_Repair);
 
             this.RepairBuilding(building);
-            bubble.resources.food -= 10;
-            bubble.resources.materials -= 15;
         }
 
         public override void Destroy(Building building, Bubble bubble)
@@ -101,7 +76,7 @@
 
             string brokenText = this.BrokenText(building);
 
-            return brokenText + $"Будинок<населення={data.count}/{data.capacity}>";
+            return brokenText + $"Будинок[{building.id}]<населення={data.count}/{data.capacity}>";
         }
     }
 }

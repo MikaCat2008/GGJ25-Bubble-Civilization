@@ -5,12 +5,17 @@ namespace BubbleApi
 {
     public class BuildingSystem : System
     {
+        public ActionUpdater actionUpdater
+        {
+            get { return GlobalStorage.actionUpdater; }
+        }
+
         public BuildingUpdater buildingUpdater
         {
             get { return GlobalStorage.buildingUpdater; }
         }
 
-        public virtual void Update(Building building, Bubble bubble) { }
+        public virtual void OnUpdate(Building building, Bubble bubble) { }
 
         public virtual Building Build(int id, Bubble bubble) 
         {
@@ -20,13 +25,21 @@ namespace BubbleApi
         public Building Build(int id, Bubble bubble, BuildingType type)
         {
             bubble.buildings.SetBuildingType(id, type);
+            Building building = bubble.buildings.GetBuilding(id);
 
-            return bubble.buildings.GetBuilding(id);
+            building.data.interval = this.storage.timer.CreateInterval(
+                this.buildingUpdater.buildingsInfo[type].updateInterval, 
+                () => this.OnUpdate(building, bubble)
+            );
+
+            return building;
         }
 
         public virtual void Destroy(Building building, Bubble bubble)
         {
             bubble.buildings.SetBuildingType(building.id, BuildingType.Empty);
+
+            this.storage.timer.DeleteInterval(building.data.interval);
         }
 
         public void BreakBuilding(Building building)
@@ -62,7 +75,9 @@ namespace BubbleApi
 
         public virtual string BuildingToString(Building building)
         {
-            return "Пусто";
+            string name = building.GetBuildingType() == BuildingType.Empty ? "Пусто" : "Будується";
+            
+            return $"{name}[{building.id}]";
         }
     }
 }

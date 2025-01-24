@@ -2,25 +2,16 @@
 {
     public class AirPurificationStation_BuildingSystem : BuildingSystem
     {
-        public override void Update(Building building, Bubble bubble)
+        public override void OnUpdate(Building building, Bubble bubble)
         {
-            if (this.storage.timer.ticks % 600 == 0)
-            {
-                this.Purify(building, bubble);
-            }
+            this.Purify(building, bubble);
         }
 
         public void StartBuilding(int id, Bubble bubble)
         {
-            if (bubble.resources.food < 10 || bubble.resources.materials < 15)
-                throw new BubbleApiException(
-                    BubbleApiExceptionType.NotEnoughResources
-                );
-
-            this.buildingUpdater.StartBuilding(id, bubble, BuildingType.AirPurificationStation, 600);
-
-            bubble.resources.food -= 10;
-            bubble.resources.materials -= 15;
+            this.actionUpdater.ProcessAction(bubble, ActionType.AirPurificationStation_Build);
+            
+            this.buildingUpdater.StartBuilding(id, bubble, BuildingType.AirPurificationStation);
             bubble.buildings.SetBuildingType(id, BuildingType.Building);
         }
 
@@ -54,13 +45,9 @@
                     BubbleApiExceptionType.BuildingIsFull
                 );
 
-            if (bubble.resources.freePopulation < 1)
-                throw new BubbleApiException(
-                    BubbleApiExceptionType.NotEnoughResources
-                );
+            this.actionUpdater.ProcessAction(bubble, ActionType.AirPurificationStation_Hire);
 
             data.count += 1;
-            bubble.resources.freePopulation -= 1;
         }
 
         public void Purify(Building building, Bubble bubble)
@@ -72,29 +59,16 @@
                     BubbleApiExceptionType.RequireRepair
                 );
 
-            if (bubble.resources.energy < 1)
-            {
-                this.BreakBuilding(building);
-
-                throw new BubbleApiException(
-                    BubbleApiExceptionType.NotEnoughResources
-                );
-            }
-
-            bubble.resources.energy -= 1;
+            this.actionUpdater.ProcessAction(bubble, ActionType.AirPurificationStation_Update, building);
+            
             bubble.resources.pollution -= 5 * data.count;
         }
 
         public void RepairBuilding(Building building, Bubble bubble)
         {
-            if (bubble.resources.food < 5 || bubble.resources.materials < 7)
-                throw new BubbleApiException(
-                    BubbleApiExceptionType.NotEnoughResources
-                );
+            this.actionUpdater.ProcessAction(bubble, ActionType.AirPurificationStation_Repair);
 
             this.RepairBuilding(building);
-            bubble.resources.food -= 5;
-            bubble.resources.materials -= 7;
         }
 
         public override void Destroy(Building building, Bubble bubble)
@@ -111,7 +85,7 @@
 
             string brokenText = this.BrokenText(building);
 
-            return brokenText + $"Очисна споруда<працівники={data.count}/{data.capacity}>";
+            return brokenText + $"Очисна споруда[{building.id}]<працівники={data.count}/{data.capacity}>";
         }
     }
 }

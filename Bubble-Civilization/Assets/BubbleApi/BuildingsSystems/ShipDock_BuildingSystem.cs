@@ -2,30 +2,16 @@
 {
     public class ShipDock_BuildingSystem : BuildingSystem
     {
-        public override void Update(Building building, Bubble bubble)
+        public override void OnUpdate(Building building, Bubble bubble)
         {
-            if (this.storage.timer.ticks % 1800 == 0)
-            {
-                if (bubble.resources.energy < 1)
-                    throw new BubbleApiException(
-                        BubbleApiExceptionType.NotEnoughResources
-                    );
-
-                bubble.resources.energy -= 1;
-            }
+            this.actionUpdater.ProcessAction(bubble, ActionType.ShipDock_Update, building);
         }
 
         public void StartBuilding(int id, Bubble bubble)
         {
-            if (bubble.resources.food < 20 || bubble.resources.materials < 50)
-                throw new BubbleApiException(
-                    BubbleApiExceptionType.NotEnoughResources
-                );
+            this.actionUpdater.ProcessAction(bubble, ActionType.ShipDock_Build);
 
-            this.buildingUpdater.StartBuilding(id, bubble, BuildingType.ShipDock, 300);
-
-            bubble.resources.food -= 20;
-            bubble.resources.materials -= 50;
+            this.buildingUpdater.StartBuilding(id, bubble, BuildingType.ShipDock);
             bubble.buildings.SetBuildingType(id, BuildingType.Building);
         }
 
@@ -66,13 +52,9 @@
                     BubbleApiExceptionType.BuildingIsFull
                 );
 
-            if (bubble.resources.freePopulation < 1)
-                throw new BubbleApiException(
-                    BubbleApiExceptionType.NotEnoughResources
-                );
+            this.actionUpdater.ProcessAction(bubble, ActionType.ShipDock_Hire);
 
             data.count += 1;
-            bubble.resources.freePopulation -= 1;
         }
 
         public void BuildShip(Building building, Bubble bubble)
@@ -89,27 +71,16 @@
                     BubbleApiExceptionType.BuildingIsFull
                 );
 
-            if (bubble.resources.food < 20 || bubble.resources.materials < 50)
-                throw new BubbleApiException(
-                    BubbleApiExceptionType.NotEnoughResources
-                );
+            this.actionUpdater.ProcessAction(bubble, ActionType.ShipDock_BuildShip);
 
             data.ships += 1;
-            
-            bubble.resources.food -= 20;
-            bubble.resources.materials-= 50;
         }
 
         public void RepairBuilding(Building building, Bubble bubble)
         {
-            if (bubble.resources.food < 15 || bubble.resources.materials < 50)
-                throw new BubbleApiException(
-                    BubbleApiExceptionType.NotEnoughResources
-                );
+            this.actionUpdater.ProcessAction(bubble, ActionType.ShipDock_Repair);
 
             this.RepairBuilding(building);
-            bubble.resources.food -= 15;
-            bubble.resources.materials -= 50;
         }
 
         public override void Destroy(Building building, Bubble bubble)
@@ -129,7 +100,7 @@
             string modeText = this.DockModeToString(dockMode);
             string brokenText = this.BrokenText(building);
 
-            return brokenText + $"Корабельна дока<режим={modeText} працівники={data.count}/{data.capacity}>";
+            return brokenText + $"Корабельна дока[{building.id}]<режим={modeText} працівники={data.count}/{data.capacity}>";
         }
 
         private string DockModeToString(DockMode dockMode)
