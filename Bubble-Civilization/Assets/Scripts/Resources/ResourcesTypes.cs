@@ -20,10 +20,16 @@ public class Resource
         return Name + ": " + Quantity.ToString();
     }
 
-    public void ChangeQuantity(int Quantity)
+    public void IncreaseQuantity(int Amount)
     {
-        Quantity += Quantity;
-        OnResourceQuantityChanged?.Invoke(Quantity);
+        this.Quantity += Amount;
+        OnResourceQuantityChanged?.Invoke(this.Quantity);
+    }
+
+    public void DecreaseQuantity(int Amount)
+    {
+        this.Quantity -= Amount;
+        OnResourceQuantityChanged?.Invoke(this.Quantity);
     }
 
 
@@ -31,9 +37,9 @@ public class Resource
 
 public class PopulationResource : Resource
 {
+    private float dieFromSufficationCoof = 0.1f;
+    private float dieFromHungerCoof = 0.1f;
 
-    
-    
     public PopulationResource()
     {
         Type = ResourceType.Population;
@@ -41,12 +47,24 @@ public class PopulationResource : Resource
         IconPath = "Assets/Resources/Images/resources/PopulationIcon.png";
     }
 
-    public void ConsumeOverTime()
+    public void Suffocate()
     {
+        float deadPeopleAmount = dieFromSufficationCoof*Quantity;
+        int changeAmount = (int)MathF.Floor(deadPeopleAmount);
+        if (Quantity > changeAmount)
+        {
+            this.DecreaseQuantity(changeAmount);
+        }
+    }
 
-
-
-
+    public void Starve()
+    {
+        float deadPeopleAmount = dieFromHungerCoof * Quantity;
+        int changeAmount = (int)MathF.Floor(deadPeopleAmount);
+        if (Quantity > changeAmount)
+        {
+            this.DecreaseQuantity(changeAmount);
+        }
     }
 }
 

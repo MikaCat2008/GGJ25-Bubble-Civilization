@@ -31,6 +31,19 @@ public class BubbleManager : MonoBehaviour
 
 
         currentBubble.ResourcesToDebugString();
+
+
+    }
+
+    private void Start()
+    {
+        Bind();
+    }
+
+    private void Bind()
+    {
+        GameplayTimeManager.OnDayPassed += currentBubble.BreathPerDay;
+        GameplayTimeManager.OnDayPassed += currentBubble.EatPerDay;
     }
 
     public Bubble GetCurrentBubble()

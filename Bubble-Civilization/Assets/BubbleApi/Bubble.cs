@@ -12,6 +12,9 @@ namespace BubbleApi
         public MaterialsResource materialsResource;
         public FuelResource fuelResource;
 
+        private float FoodForPersonPerDay = 0.01f;
+        private float OxygenForPersonPerDay = 0.1f;
+
         public Bubble()
         {
             populationResource = new PopulationResource();
@@ -40,6 +43,36 @@ namespace BubbleApi
                 fuelResource.ToDebugString();
         }
 
+
+        public void BreathPerDay()
+        {
+            float breathAmount = OxygenForPersonPerDay * populationResource.Quantity;
+            int changeAmount = (int)MathF.Floor(breathAmount);
+
+            if (oxygenResource.Quantity > changeAmount + 1.0f)
+            {
+                oxygenResource.DecreaseQuantity(changeAmount);
+            }
+            else
+            {
+                populationResource.Suffocate();
+            }
+        }
+
+        public void EatPerDay()
+        {
+            float foodAmount = FoodForPersonPerDay * populationResource.Quantity;
+            int changeAmount = (int)MathF.Floor(foodAmount);
+
+            if (foodResource.Quantity > changeAmount + 1.0f)
+            {
+                foodResource.DecreaseQuantity(changeAmount);
+            }
+            else
+            {
+                populationResource.Starve();
+            }
+        }
 
 
         public ResourcesContainer resources;

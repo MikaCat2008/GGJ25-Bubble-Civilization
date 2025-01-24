@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using BubbleApi;
-
+using System;
 
 
 public class GameplayTimeManager : MonoBehaviour
@@ -98,11 +98,12 @@ public class GameplayTimeManager : MonoBehaviour
 
     }
 
-
+    public static event Action OnDayPassed;
     [SerializeField] public Slider timePassedSlider;
     [SerializeField] public TMP_Text currentDayText;
     [SerializeField] public TMP_Text currentMonthText;
     [SerializeField] public TMP_Text currentYearhText;
+
 
 
     private bool isPaused = true;
@@ -162,6 +163,7 @@ public class GameplayTimeManager : MonoBehaviour
             if (!isPaused)
             {
                 calendar.AdvanceDay();
+                OnDayPassed?.Invoke();
                 updateTimeOnUI();
             }
         }
