@@ -31,7 +31,7 @@
 
         private void RemoveOxygen(Bubble bubble)
         {
-            bubble.resources.oxygen -= 1;
+            bubble.resources.oxygen -= bubble.resources.population;
         }
 
         public Bubble CreateBaseBubble()

@@ -11,7 +11,7 @@
         Population
     }
 
-    public struct ResourcesContainer
+    public class ResourcesContainer
     {
         public int food;
         public int fuel;

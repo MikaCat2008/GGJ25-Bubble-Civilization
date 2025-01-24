@@ -9,6 +9,7 @@ namespace BubbleApi
         public static SystemsContainer systems;
         public static ActionUpdater actionUpdater;
         public static BuildingUpdater buildingUpdater;
+        public static ResourcesUpdater resourcesUpdater;
 
         private static bool initialized = false;
 
@@ -158,6 +159,8 @@ namespace BubbleApi
 
             GlobalStorage.systems.bubble.CreateBubble(0);
             GlobalStorage.storage.currentBubble = GlobalStorage.storage.bubbles[0];
+
+            GlobalStorage.resourcesUpdater = new ResourcesUpdater();
 
             GlobalStorage.initialized = true;
 
