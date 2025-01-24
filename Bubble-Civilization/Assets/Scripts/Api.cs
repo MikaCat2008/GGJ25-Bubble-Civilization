@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class Api : MonoBehaviour
 {
-    public void Awake()
+    void Awake()
     {
         GlobalStorage.Initialize();
 
-        Debug.Log(GlobalStorage.storage.bubbles[0].buildings.container[0].GetBuildingType());
-
-        GlobalStorage.systems.house.StartBuilding(
-            0, GlobalStorage.storage.bubbles[0]
-        );
+        //GlobalStorage.systems.house.StartBuilding(
+        //    0, GlobalStorage.storage.bubbles[0]
+        //);
 
         GlobalStorage.buildingUpdater.OnBuildingDone += (Building building, Bubble bubble) =>
         {
@@ -28,7 +26,14 @@ public class Api : MonoBehaviour
         };
     }
 
-    public void FixedUpdate()
+    private void Start()
+    {
+        Building building = GlobalStorage.storage.currentBubble.buildings.GetBuilding(0);
+
+        WindowManager.OpenBuildingMenu(building);
+    }
+
+    void FixedUpdate()
     {
         if (GlobalStorage.storage.timer.speed == 0)
             return;

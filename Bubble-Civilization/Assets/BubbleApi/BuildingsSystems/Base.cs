@@ -46,6 +46,12 @@ namespace BubbleApi
         {
             building.data.requireRepair = true;
         }
+
+        public virtual void RepairBuilding(Building building, Bubble bubble)
+        {
+            this.RepairBuilding(building);
+        }
+
         public void RepairBuilding(Building building)
         {
             building.data.requireRepair = false;

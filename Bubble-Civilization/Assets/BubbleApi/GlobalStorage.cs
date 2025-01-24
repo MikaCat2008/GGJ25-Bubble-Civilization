@@ -157,6 +157,7 @@ namespace BubbleApi
             };
 
             GlobalStorage.systems.bubble.CreateBubble(0);
+            GlobalStorage.storage.currentBubble = GlobalStorage.storage.bubbles[0];
 
             GlobalStorage.initialized = true;
 

@@ -64,11 +64,13 @@ namespace BubbleApi
     {
         public Timer timer;
         public Dictionary<int, Bubble> bubbles;
+        public Bubble currentBubble;
 
         public Storage()
         {
             this.timer = new Timer();
             this.bubbles = new Dictionary<int, Bubble>();
+            this.currentBubble = null;
         }
     }
 }

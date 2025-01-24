@@ -55,7 +55,7 @@
             data.count += 1;
         }
 
-        public void RepairBuilding(Building building, Bubble bubble)
+        public override void RepairBuilding(Building building, Bubble bubble)
         {
             this.actionUpdater.ProcessAction(bubble, ActionType.House_Repair);
 

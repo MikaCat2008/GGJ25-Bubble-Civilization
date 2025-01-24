@@ -38,6 +38,8 @@ public class Test : MonoBehaviour
 
     void Start()
     {
+        return;
+
         Bubble bubble = GlobalStorage.storage.bubbles[0];
 
         // створення всіх видів будівель
