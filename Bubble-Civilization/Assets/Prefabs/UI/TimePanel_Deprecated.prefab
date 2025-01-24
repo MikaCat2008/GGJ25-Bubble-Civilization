@@ -1509,7 +1509,7 @@ GameObject:
   - component: {fileID: 2972215294885534691}
   - component: {fileID: 8545044269981406899}
   m_Layer: 5
-  m_Name: TimePanel
+  m_Name: TimePanel_Deprecated
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

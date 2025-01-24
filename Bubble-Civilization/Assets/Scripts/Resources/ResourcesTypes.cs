@@ -6,7 +6,7 @@ using System.Collections.Generic;
 public class Resource
 {
     //for UI to subscribe and update
-    public event Action<int> OnResourceAmountChanged;
+    public event Action<int> OnResourceQuantityChanged;
 
     public int Quantity = 0;
     public int Capacity = 10000;
@@ -19,15 +19,34 @@ public class Resource
     {
         return Name + ": " + Quantity.ToString();
     }
+
+    public void ChangeQuantity(int Quantity)
+    {
+        Quantity += Quantity;
+        OnResourceQuantityChanged?.Invoke(Quantity);
+    }
+
+
 }
 
 public class PopulationResource : Resource
 {
+
+    
+    
     public PopulationResource()
     {
         Type = ResourceType.Population;
         Name = "Населення";
         IconPath = "Assets/Resources/Images/resources/PopulationIcon.png";
+    }
+
+    public void ConsumeOverTime()
+    {
+
+
+
+
     }
 }
 

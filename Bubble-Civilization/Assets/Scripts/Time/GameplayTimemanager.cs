@@ -14,16 +14,19 @@ public class GameplayTimeManager : MonoBehaviour
         private int _number;
         private int _numberOfDays;
         private string _name;
+        private string _nameR;
 
         public int Number { get => _number; set => _number = value; }
         public int NumberOfDays { get => _numberOfDays; set => _numberOfDays = value; }
         public string Name { get => _name; set => _name = value; }
+        public string NameR { get => _nameR; set => _nameR = value; }
 
-        public Month(int Number, int NumberOfDays, string Name)
+        public Month(int Number, int NumberOfDays, string Name, string NameR)
         {
             _number = Number;
             _numberOfDays = NumberOfDays;
             _name = Name;
+            _nameR = NameR;
         }
     }
     public class Calendar
@@ -32,18 +35,18 @@ public class GameplayTimeManager : MonoBehaviour
         private int _currentMonth = 2;
         private int _currentYear = 1312;
 
-        Month[] _months = { new Month(1, 31, "січень"),
-                           new Month(2, 28, "лютий"),
-                           new Month(3, 31, "березень"),
-                           new Month(4, 30, "квітень"),
-                           new Month(5, 31, "травень"),
-                           new Month(6, 30, "червень"),
-                           new Month(7, 31, "липень"),
-                           new Month(8, 31, "серпень"),
-                           new Month(9, 30, "вересень"),
-                           new Month(10, 31, "жовтень"),
-                           new Month(11, 30, "листопад"),
-                           new Month(12, 31, "грудень")};
+        Month[] _months = { new Month(1, 31, "січень",  "січня"),
+                           new Month(2, 28, "лютий",    "лютого"),
+                           new Month(3, 31, "березень", "березня"),
+                           new Month(4, 30, "квітень",  "квітня"),
+                           new Month(5, 31, "травень",  "травня"),
+                           new Month(6, 30, "червень",  "червень"),
+                           new Month(7, 31, "липень",   "липня"),
+                           new Month(8, 31, "серпень",  "серпня"),
+                           new Month(9, 30, "вересень", "вересня"),
+                           new Month(10, 31, "жовтень", "жовтня"),
+                           new Month(11, 30, "листопад","листопадаь"),
+                           new Month(12, 31, "грудень", "грудня")};
 
         public int GetCurrentYear()
         {
@@ -53,6 +56,16 @@ public class GameplayTimeManager : MonoBehaviour
         {
             return _months[_currentMonth - 1].Name;
         }
+        //ім'я в родовому відмінку
+        public string GetCurrentMonthNameR()
+        {
+            return _months[_currentMonth - 1].NameR;
+        }
+        public int GetCurrentDay()
+        {
+            return _currentDay;
+        }
+
         public int GetCurrentMonthDays()
         {
             return _months[_currentMonth - 1].NumberOfDays;
@@ -87,6 +100,7 @@ public class GameplayTimeManager : MonoBehaviour
 
 
     [SerializeField] public Slider timePassedSlider;
+    [SerializeField] public TMP_Text currentDayText;
     [SerializeField] public TMP_Text currentMonthText;
     [SerializeField] public TMP_Text currentYearhText;
 
@@ -157,9 +171,14 @@ public class GameplayTimeManager : MonoBehaviour
 
     private void updateTimeOnUI()
     {
-        timePassedSlider.SetValueWithoutNotify(calendar.GetCurrentMonthProgressPercent());
+        if (timePassedSlider != null)
+        {
+            timePassedSlider.SetValueWithoutNotify(calendar.GetCurrentMonthProgressPercent());
+        }
 
-        currentMonthText.text = calendar.GetCurrentMonthName();
+
+        currentDayText.text = calendar.GetCurrentDay().ToString();
+        currentMonthText.text = calendar.GetCurrentMonthNameR();
         currentYearhText.text = calendar.GetCurrentYear().ToString();
     }
 

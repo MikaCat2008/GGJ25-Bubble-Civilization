@@ -6,6 +6,7 @@ public class BubbleManager : MonoBehaviour
 {
     private Bubble currentBubble;
 
+    //[SerializeField] 
     void PrintBuildings(string text, Bubble bubble)
     {
         string[] buildings = new string[bubble.buildings.container.Count];

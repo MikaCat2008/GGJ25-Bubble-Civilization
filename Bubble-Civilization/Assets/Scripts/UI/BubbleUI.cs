@@ -35,20 +35,20 @@ public class BubbleUI : MonoBehaviour
     private void Bind()
     {
 
-        currentBubble.populationResource.OnResourceAmountChanged += UpdatePopulationQuantity;
-        currentBubble.foodResource.OnResourceAmountChanged += UpdateFoodQuantity;
-        currentBubble.oxygenResource.OnResourceAmountChanged += UpdateOxygenQuantity;
-        currentBubble.materialsResource.OnResourceAmountChanged += UpdateMaterialsQuantity;
-        currentBubble.fuelResource.OnResourceAmountChanged += UpdateFuelQuantity;
+        currentBubble.populationResource.OnResourceQuantityChanged += UpdatePopulationQuantity;
+        currentBubble.foodResource.OnResourceQuantityChanged += UpdateFoodQuantity;
+        currentBubble.oxygenResource.OnResourceQuantityChanged += UpdateOxygenQuantity;
+        currentBubble.materialsResource.OnResourceQuantityChanged += UpdateMaterialsQuantity;
+        currentBubble.fuelResource.OnResourceQuantityChanged += UpdateFuelQuantity;
     }
 
     private void UnBind()
     {
-        currentBubble.populationResource.OnResourceAmountChanged -= UpdatePopulationQuantity;
-        currentBubble.foodResource.OnResourceAmountChanged -= UpdateFoodQuantity;
-        currentBubble.oxygenResource.OnResourceAmountChanged -= UpdateOxygenQuantity;
-        currentBubble.materialsResource.OnResourceAmountChanged -= UpdateMaterialsQuantity;
-        currentBubble.fuelResource.OnResourceAmountChanged-= UpdateFuelQuantity;
+        currentBubble.populationResource.OnResourceQuantityChanged -= UpdatePopulationQuantity;
+        currentBubble.foodResource.OnResourceQuantityChanged -= UpdateFoodQuantity;
+        currentBubble.oxygenResource.OnResourceQuantityChanged -= UpdateOxygenQuantity;
+        currentBubble.materialsResource.OnResourceQuantityChanged -= UpdateMaterialsQuantity;
+        currentBubble.fuelResource.OnResourceQuantityChanged-= UpdateFuelQuantity;
     }
 
     private void UpdateEverything()
