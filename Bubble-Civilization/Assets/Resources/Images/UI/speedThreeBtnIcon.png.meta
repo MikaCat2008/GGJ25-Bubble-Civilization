@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      speedThreeBtnIcon_0: 5270353316230509987
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
