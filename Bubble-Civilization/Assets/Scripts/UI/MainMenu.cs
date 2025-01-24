@@ -12,21 +12,6 @@ public class MainMenu : MonoBehaviour
 
     //private GameObject MainMenuGO;
 
-    public void Start()
-    {
-        GlobalStorage.Initialize();
-        GlobalStorage.storage.timer.speed = 1;
-
-        GlobalStorage.systems.house.StartBuilding(
-            0, GlobalStorage.storage.bubbles[0]
-        );
-
-        GlobalStorage.buildingUpdater.OnBuildingDone += (Building building, Bubble bubble) =>
-        {
-
-        };
-    }
-
     public void menuStrart()
     {
         this.gameObject.SetActive(false);

@@ -38,12 +38,12 @@ namespace BubbleApi
 
         private bool UpdateBreaking(Building building, Bubble bubble)
         {
-            bool status = new Random().Next(0, 36000 / GlobalStorage.storage.timer.speed) == 0;
+            bool status = new Random().Next(0, 1080 / GlobalStorage.storage.timer.speed) == 0;
 
             if (status)
             {
                 this.systems.building.BreakBuilding(building);
-                this.OnBreak.Invoke(building, bubble);
+                this.OnBreak?.Invoke(building, bubble);
             }
 
             return status;
