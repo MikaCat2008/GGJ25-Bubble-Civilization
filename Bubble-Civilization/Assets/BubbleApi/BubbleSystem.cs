@@ -26,5 +26,19 @@
 
             return bubble;
         }
+
+
+
+        public Bubble CreateBaseBubble()
+        {
+            ResourcesContainer resources = new ResourcesContainer(
+                500, 500, 500
+            );
+            BuildingsContainer buildings = new BuildingsContainer();
+
+            Bubble bubble = new Bubble(resources, buildings);
+
+            return bubble;
+        }
     }
 }
