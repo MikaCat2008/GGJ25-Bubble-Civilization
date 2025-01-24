@@ -82,8 +82,9 @@ public class TimePanel : MonoBehaviour
 
     public void Timer_Speed3()
     {
-        GlobalStorage.storage.timer.speed = 4;
-    
+        //GlobalStorage.storage.timer.speed = 4;
+        GlobalStorage.storage.timer.speed = 99;
+
         this.SetActiveButtonText(this.speed3ButtonText);
     }
 }

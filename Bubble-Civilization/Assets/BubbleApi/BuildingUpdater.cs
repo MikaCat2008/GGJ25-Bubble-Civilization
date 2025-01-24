@@ -28,6 +28,8 @@ namespace BubbleApi
         public SystemsContainer systems;
         public event BuildingEventHandler OnBuildingDone;
         public event BuildingEventHandler OnBreak;
+        public event BuildingEventHandler OnRepaired;
+        public event BuildingEventHandler OnDestroyed;
         public Dictionary<BuildingType, BuildingInfo> buildingsInfo;
         public List<BuildingTimeout> buildingQueue;
 
@@ -40,6 +42,10 @@ namespace BubbleApi
 
         private bool UpdateBreaking(Building building, Bubble bubble)
         {
+            if (building.data.requireRepair)
+                return false;
+
+            //bool status = new Random().Next(0, 1080 / GlobalStorage.storage.timer.speed) == 0;
             bool status = new Random().Next(0, 108000 / GlobalStorage.storage.timer.speed) == 0;
 
             if (status)
@@ -60,6 +66,16 @@ namespace BubbleApi
 
             if (this.UpdateBreaking(building, bubble))
                 return;
+        }
+
+        public void DestroyBuilding(Building building, Bubble bubble)
+        {
+            this.OnDestroyed?.Invoke(building, bubble);
+        }
+
+        public void RepairBuilding(Building building, Bubble bubble)
+        {
+            this.OnRepaired?.Invoke(building, bubble);
         }
 
         public void StartBuilding(int id, Bubble bubble, BuildingType type)

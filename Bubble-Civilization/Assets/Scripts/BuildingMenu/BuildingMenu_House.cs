@@ -5,8 +5,8 @@ public class BuildingMenu_House : BuildingMenu
 {
     public override void Show()
     {
-        this.UpdateProperties();
         this.SetErrorMessage("");
+        this.UpdateProperties();
 
         base.Show();
     }
@@ -24,10 +24,10 @@ public class BuildingMenu_House : BuildingMenu
         {
             if (exception.type == BubbleApiExceptionType.BuildingIsFull)
                 this.SetErrorMessage("В будинку немає місця!");
-            else if (exception.type == BubbleApiExceptionType.RequireRepair)
-                this.SetErrorMessage("Будинок зламаний!");
             else if (exception.type == BubbleApiExceptionType.NotEnoughResources)
                 this.SetErrorMessage("Не вистачає ресурсів!");
+            else
+                this.SetErrorMessage(exception.type.ToString());
         }
 
         this.UpdateProperties();
@@ -37,7 +37,7 @@ public class BuildingMenu_House : BuildingMenu
     {
         Building building = WindowManager.GetActiveBuilding();
         House_BuildingData data = (House_BuildingData)building.data;
-        
+
         this.SetProperties(
             $"Кількість жителів: {data.count} / {data.capacity}"
         );

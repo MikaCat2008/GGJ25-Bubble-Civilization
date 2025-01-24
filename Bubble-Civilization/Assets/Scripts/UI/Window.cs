@@ -16,6 +16,18 @@ public static class WindowManager
     {
         return WindowManager.window.activeBuilding;
     }
+
+    public static void SetErrorMessage(string text)
+    {
+        Building? building = WindowManager.GetActiveBuilding();
+
+        if (building == null)
+            return;
+
+        BuildingMenu buildingMenu = WindowManager.window.GetBuildingMenu(building);
+
+        buildingMenu.SetErrorMessage(text);
+    }
 }
 
 
@@ -58,7 +70,7 @@ public class Window : MonoBehaviour
         buildingMenu.Show();
     }
 
-    private BuildingMenu GetBuildingMenu(Building building)
+    public BuildingMenu GetBuildingMenu(Building building)
     {
         BuildingType buildingType = building.GetBuildingType();
 

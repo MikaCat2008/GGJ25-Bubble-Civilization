@@ -40,6 +40,7 @@ namespace BubbleApi
             bubble.buildings.SetBuildingType(building.id, BuildingType.Empty);
 
             this.storage.timer.DeleteInterval(building.data.interval);
+            this.buildingUpdater.DestroyBuilding(building, bubble);
         }
 
         public void BreakBuilding(Building building)
@@ -50,11 +51,12 @@ namespace BubbleApi
         public virtual void RepairBuilding(Building building, Bubble bubble)
         {
             this.RepairBuilding(building);
+            this.buildingUpdater.RepairBuilding(building, bubble);
         }
 
         public void RepairBuilding(Building building)
         {
-            building.data.requireRepair = false;
+            building.data.requireRepair = false;   
         }
 
         public T GetData<T>(Building building, BuildingType type) where T : BuildingData

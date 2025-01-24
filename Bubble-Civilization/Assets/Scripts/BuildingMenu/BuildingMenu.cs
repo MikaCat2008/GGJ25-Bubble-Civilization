@@ -1,4 +1,4 @@
-using TMPro;
+﻿using TMPro;
 using BubbleApi;
 using UnityEngine;
 
@@ -50,7 +50,12 @@ public class BuildingMenu : MonoBehaviour
 
     public void SetErrorMessage(string text)
     {
-        this.errorMessage.text = text;
+        Building building = WindowManager.GetActiveBuilding();
+
+        if (building.data.requireRepair)
+            this.errorMessage.text = "Будівля зламана! Відремонтуйте.";
+        else
+            this.errorMessage.text = text;
     }
 
     public virtual void Show()
@@ -65,9 +70,12 @@ public class BuildingMenu : MonoBehaviour
 
     public void OnRepair()
     {
-        Bubble bubble = GlobalStorage.storage.currentBubble;
         Building building = WindowManager.GetActiveBuilding();
 
+        if (!building.data.requireRepair)
+            return;
+
+        Bubble bubble = GlobalStorage.storage.currentBubble;
         BuildingSystem system = GlobalStorage.systems.GetBuildingSystem(
             building.GetBuildingType()
         );

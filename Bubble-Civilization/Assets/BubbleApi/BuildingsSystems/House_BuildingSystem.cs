@@ -59,7 +59,7 @@
         {
             this.actionUpdater.ProcessAction(bubble, ActionType.House_Repair);
 
-            this.RepairBuilding(building);
+            base.RepairBuilding(building, bubble);
         }
 
         public override void Destroy(Building building, Bubble bubble)

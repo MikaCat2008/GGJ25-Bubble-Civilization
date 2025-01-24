@@ -64,11 +64,11 @@
             bubble.resources.pollution -= 5 * data.count;
         }
 
-        public void RepairBuilding(Building building, Bubble bubble)
+        public override void RepairBuilding(Building building, Bubble bubble)
         {
             this.actionUpdater.ProcessAction(bubble, ActionType.AirPurificationStation_Repair);
 
-            this.RepairBuilding(building);
+            base.RepairBuilding(building, bubble);
         }
 
         public override void Destroy(Building building, Bubble bubble)

@@ -76,11 +76,11 @@
             data.ships += 1;
         }
 
-        public void RepairBuilding(Building building, Bubble bubble)
+        public override void RepairBuilding(Building building, Bubble bubble)
         {
             this.actionUpdater.ProcessAction(bubble, ActionType.ShipDock_Repair);
 
-            this.RepairBuilding(building);
+            base.RepairBuilding(building, bubble);
         }
 
         public override void Destroy(Building building, Bubble bubble)

@@ -23,6 +23,28 @@ public class Api : MonoBehaviour
             BuildingSystem system = GlobalStorage.systems.GetBuildingSystem(building.GetBuildingType());
 
             Debug.Log($"Будівля {system.BuildingToString(building)} зламалась !");
+
+            Building activeBuilding = WindowManager.GetActiveBuilding();
+
+            if (building == activeBuilding)
+                WindowManager.SetErrorMessage("");
+        };
+        GlobalStorage.buildingUpdater.OnRepaired += (Building building, Bubble bubble) =>
+        {
+            BuildingSystem system = GlobalStorage.systems.GetBuildingSystem(building.GetBuildingType());
+
+            Debug.Log($"Будівля {system.BuildingToString(building)} відремонтована !");
+
+            Building activeBuilding = WindowManager.GetActiveBuilding();
+
+            if (building == activeBuilding)
+                WindowManager.SetErrorMessage("");
+        };
+        GlobalStorage.buildingUpdater.OnDestroyed += (Building building, Bubble bubble) =>
+        {
+            BuildingSystem system = GlobalStorage.systems.GetBuildingSystem(building.GetBuildingType());
+
+            Debug.Log($"Будівля {system.BuildingToString(building)} зруйнована !");
         };
     }
 
