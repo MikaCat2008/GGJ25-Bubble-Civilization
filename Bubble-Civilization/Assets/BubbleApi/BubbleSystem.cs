@@ -29,7 +29,10 @@
             return bubble;
         }
 
-
+        private void RemoveOxygen(Bubble bubble)
+        {
+            bubble.resources.oxygen -= 1;
+        }
 
         public Bubble CreateBaseBubble()
         {
