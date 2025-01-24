@@ -1,28 +1,29 @@
-﻿using System.IO;
+﻿using System;
 using UnityEngine;
 using BubbleApi;
 using System.Collections.Generic;
 
 public class Resource
 {
+    //for UI to subscribe and update
+    public event Action<int> OnResourceAmountChanged;
+
+    public int Quantity = 0;
+    public int Capacity = 10000;
+
     public ResourceType Type;
     public string Name;
     public string IconPath;
-}
 
-public class FuelResource : Resource
-{
-    FuelResource()
+    public string ToDebugString()
     {
-        Type = ResourceType.Fuel;
-        Name = "Паливо";
-        IconPath = "Assets/Resources/Images/resources/FuelIcon.png";
+        return Name + ": " + Quantity.ToString();
     }
 }
 
 public class PopulationResource : Resource
 {
-    PopulationResource()
+    public PopulationResource()
     {
         Type = ResourceType.Population;
         Name = "Населення";
@@ -32,7 +33,7 @@ public class PopulationResource : Resource
 
 public class FoodResource : Resource
 {
-    FoodResource()
+    public FoodResource()
     {
         Type = ResourceType.Food;
         Name = "Провіант";
@@ -42,7 +43,7 @@ public class FoodResource : Resource
 
 public class OxygenResource : Resource
 {
-    OxygenResource()
+    public OxygenResource()
     {
         Type = ResourceType.Oxygen;
         Name = "Кисень";
@@ -52,7 +53,7 @@ public class OxygenResource : Resource
 
 public class MaterialsResource : Resource
 {
-    MaterialsResource()
+    public MaterialsResource()
     {
         Type = ResourceType.Materials;
         Name = "Матеріали";
@@ -60,3 +61,12 @@ public class MaterialsResource : Resource
     }
 }
 
+public class FuelResource : Resource
+{
+    public FuelResource()
+    {
+        Type = ResourceType.Fuel;
+        Name = "Паливо";
+        IconPath = "Assets/Resources/Images/resources/FuelIcon.png";
+    }
+}

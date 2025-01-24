@@ -29,9 +29,18 @@
             return bubble;
         }
 
-        private void RemoveOxygen(Bubble bubble)
+
+
+        public Bubble CreateBaseBubble()
         {
-            bubble.resources.oxygen -= 1;
+            ResourcesContainer resources = new ResourcesContainer(
+                500, 500, 500
+            );
+            BuildingsContainer buildings = new BuildingsContainer();
+
+            Bubble bubble = new Bubble(resources, buildings);
+
+            return bubble;
         }
     }
 }
