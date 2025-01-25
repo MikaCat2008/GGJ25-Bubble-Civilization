@@ -11,7 +11,7 @@ namespace BubbleApi
         public static BuildingUpdater buildingUpdater;
         public static ResourcesUpdater resourcesUpdater;
 
-        private static bool initialized = false;
+        public static bool initialized = false;
 
         public static bool Initialize()
         {
@@ -64,7 +64,7 @@ namespace BubbleApi
                     materials: -50
                 ) },
                 { ActionType.PowerStation_Update, new ResourcesContainer(
-                    food: -1,
+                    fuel: -1,
                     pollution: 1
                 ) },
                 { ActionType.PowerStation_Hire, new ResourcesContainer(

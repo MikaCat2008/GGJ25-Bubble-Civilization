@@ -1,12 +1,12 @@
+using BubbleApi;
 using UnityEngine;
-using System;
 
 public class HousePlacePoint : MonoBehaviour
 {
-    public event Action<HousePlacePoint> OnPlacePointClicked;
-
+    [SerializeField] int id;
     [SerializeField] SpriteRenderer sprite;
-    
+    [SerializeField] GameObject building;
+
     void Start()
     {
         sprite.sortingOrder = 10;
@@ -20,17 +20,41 @@ public class HousePlacePoint : MonoBehaviour
 
     public void OnMouseDown()
     {
-        //Debug.Log("OnPlacePointClicked");
-        OnPlacePointClicked?.Invoke(this);
+        Building building = GlobalStorage.storage.currentBubble.buildings.GetBuilding(this.id);
+        BuildingType currentType = building.GetBuildingType();
+
+        if (currentType != BuildingType.Empty)
+        {
+            if (currentType != BuildingType.Building)
+                WindowManager.OpenBuildingMenu(building);
+
+            return;
+        }
+
+        if (BuildingPlacementUI.currentBuildingType == null)
+            return;
+
+        try
+        {
+            currentType = (BuildingType)BuildingPlacementUI.currentBuildingType;
+
+            GlobalStorage.systems.GetBuildingSystem(currentType).StartBuilding(
+                this.id, GlobalStorage.storage.currentBubble
+            );
+
+            BuildingPlacementUI.SetBuildingType(this.id, BuildingType.Building);
+        }
+        catch (BubbleApiException exception) 
+        {
+            Debug.Log(exception);
+        }
     }
     public void OnMouseEnter()
     {
-        //Debug.Log("OnPlacePointEntered");
         Highlight();
     }
     public void OnMouseExit()
     {
-        //Debug.Log("OnPlacePointExited");
         UnHighlight();
     }
 
@@ -42,5 +66,12 @@ public class HousePlacePoint : MonoBehaviour
     private void UnHighlight()
     {
         sprite.color = new Color(1, 1, 1, 0.4f);
+    }
+
+    public void SetBuildingSprite(Sprite sprite)
+    {
+        SpriteRenderer spriteRenderer = this.building.GetComponent<SpriteRenderer>();
+
+        spriteRenderer.sprite = sprite;
     }
 }

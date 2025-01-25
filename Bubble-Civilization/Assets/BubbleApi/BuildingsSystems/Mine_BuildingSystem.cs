@@ -7,7 +7,7 @@
             this.Mine(building, bubble);
         }
 
-        public void StartBuilding(int id, Bubble bubble)
+        public override void StartBuilding(int id, Bubble bubble)
         {
             this.actionUpdater.ProcessAction(bubble, ActionType.Mine_Build);
 

@@ -7,12 +7,29 @@ public class Api : MonoBehaviour
 {
     void Awake()
     {
+        GlobalStorage.initialized = false;
         GlobalStorage.Initialize();
 
-        //GlobalStorage.systems.house.StartBuilding(
-        //    0, GlobalStorage.storage.bubbles[0]
-        //);
+        GlobalStorage.buildingUpdater.OnBuildingDone += (Building building, Bubble bubble) =>
+        {
+            Building activeBuilding = WindowManager.GetActiveBuilding();
+            BuildingType type = building.GetBuildingType();
 
+            if (type == BuildingType.House)
+                GlobalStorage.systems.house.SetCapacity(building, 20);
+            else if (type == BuildingType.Mine)
+                GlobalStorage.systems.mine.SetCapacity(building, 10);
+            else if (type == BuildingType.PowerStation)
+                GlobalStorage.systems.powerStation.SetCapacity(building, 10);
+            else if (type == BuildingType.GreenHouse)
+                GlobalStorage.systems.greenHouse.SetCapacity(building, 10);
+            else if (type == BuildingType.ShipDock)
+                GlobalStorage.systems.shipDock.SetCapacity(building, 10);
+            else if (type == BuildingType.AirPurificationStation)
+                GlobalStorage.systems.airPurificationStation.SetCapacity(building, 10);
+
+            BuildingPlacementUI.SetBuildingType(building.id, building.GetBuildingType());
+        };
         GlobalStorage.buildingUpdater.OnBreak += (Building building, Bubble bubble) =>
         {
             Building activeBuilding = WindowManager.GetActiveBuilding();
@@ -27,13 +44,11 @@ public class Api : MonoBehaviour
             if (building == activeBuilding)
                 WindowManager.SetErrorMessage("");
         };
-    }
 
-    private void Start()
-    {
-        Building building = GlobalStorage.storage.currentBubble.buildings.GetBuilding(0);
-
-        WindowManager.OpenBuildingMenu(building);
+        GlobalStorage.resourcesUpdater.OnFuelChanged += (int value) =>
+        {
+            Debug.Log(value);
+        };
     }
 
     void FixedUpdate()
@@ -52,7 +67,9 @@ public class Api : MonoBehaviour
         {
             GlobalStorage.Reinitialize();
 
-            SceneManager.LoadScene("MainMenuScene");
+            Debug.Log(exception.type);
+
+            SceneManager.LoadScene("MainMenuScene"); ;
 
             return;
         }

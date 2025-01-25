@@ -7,7 +7,7 @@
             this.GenerateElectricity(building, bubble);
         }
 
-        public void StartBuilding(int id, Bubble bubble)
+        public override void StartBuilding(int id, Bubble bubble)
         {
             this.actionUpdater.ProcessAction(bubble, ActionType.PowerStation_Build);
             
@@ -59,9 +59,9 @@
                     BubbleApiExceptionType.RequireRepair
                 );
 
-            this.actionUpdater.ProcessAction(bubble, ActionType.PowerStation_Build, building);
+            this.actionUpdater.ProcessAction(bubble, ActionType.PowerStation_Update, building);
 
-            bubble.resources.fuel += 2 * data.count;
+            bubble.resources.energy += 2 * data.count;
         }
 
         public override void RepairBuilding(Building building, Bubble bubble)

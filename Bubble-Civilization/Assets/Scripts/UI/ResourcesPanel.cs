@@ -26,6 +26,13 @@ public class ResourcesPanel : MonoBehaviour
             this.populationText.text = value.ToString();
         GlobalStorage.resourcesUpdater.OnFreePopulationChanged += (int value) =>
             this.freePopulationText.text = value.ToString();
+
+        this.foodText.text = GlobalStorage.storage.currentBubble.resources.food.ToString();
+        this.fuelText.text = GlobalStorage.storage.currentBubble.resources.fuel.ToString();
+        this.energyText.text = GlobalStorage.storage.currentBubble.resources.energy.ToString();
+        this.materialsText.text = GlobalStorage.storage.currentBubble.resources.materials.ToString();
+        this.populationText.text = GlobalStorage.storage.currentBubble.resources.population.ToString();
+        this.freePopulationText.text = GlobalStorage.storage.currentBubble.resources.freePopulation.ToString();
     }
 
     void Update()

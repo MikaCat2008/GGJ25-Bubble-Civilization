@@ -7,7 +7,7 @@
             this.actionUpdater.ProcessAction(bubble, ActionType.House_Update, building);
         }
 
-        public void StartBuilding(int id, Bubble bubble)
+        public override void StartBuilding(int id, Bubble bubble)
         {
             this.actionUpdater.ProcessAction(bubble, ActionType.House_Build);
 
@@ -31,7 +31,7 @@
             if (capacity < 0)
                 throw new BubbleApiException(
                     BubbleApiExceptionType.IncorrectBuildingData
-                );
+                ); 
 
             data.capacity = capacity;
         }

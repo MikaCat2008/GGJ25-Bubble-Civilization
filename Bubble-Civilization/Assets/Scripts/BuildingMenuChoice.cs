@@ -1,7 +1,9 @@
 using TMPro;
+using System;
 using System.Collections.Generic;
 using BubbleApi;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 public class BuildingMenuChoice : MonoBehaviour
@@ -24,8 +26,27 @@ public class BuildingMenuChoice : MonoBehaviour
     [SerializeField] TMP_Text airPurificationStationResources_foodText;
     [SerializeField] TMP_Text airPurificationStationResources_materialsText;
 
+    [SerializeField] GameObject buildHouse;
+    [SerializeField] GameObject buildMine;
+    [SerializeField] GameObject buildPowerStation;
+    [SerializeField] GameObject buildGreenHouse;
+    [SerializeField] GameObject buildShipDock;
+    [SerializeField] GameObject buildAirPurificationStation;
+
+    private bool holding;
+    private Vector2 menuHoldPosition;
+    private Vector2 mouseHoldPosition;
+    private RectTransform rectTransform;
+
+    [SerializeField] GameObject openButton;
+
     private void Start()
     {
+        this.holding = false;
+        this.menuHoldPosition = new Vector2();
+        this.mouseHoldPosition = new Vector2();
+        this.rectTransform = this.gameObject.GetComponent<RectTransform>();
+
         Dictionary<ActionType, ResourcesContainer> actions = GlobalStorage.actionUpdater.actions;
 
         ResourcesContainer houseBuildResources = actions[ActionType.House_Build];
@@ -54,19 +75,56 @@ public class BuildingMenuChoice : MonoBehaviour
         this.airPurificationStationResources_materialsText.text = (-airPurificationStationBuildResources.materials).ToString();
     }
 
+    void Update()
+    {
+        if (this.holding)
+        {
+            Vector2 mousePosition = Input.mousePosition;
+
+            this.rectTransform.position = this.menuHoldPosition + (mousePosition - this.mouseHoldPosition);
+        }
+    }
+
+    public void OnHeaderDown()
+    {
+        this.holding = true;
+        this.menuHoldPosition = this.rectTransform.position;
+        this.mouseHoldPosition = Input.mousePosition;
+    }
+
+    public void OnHeaderUp()
+    {
+        this.holding = false;
+    }
+    
     public void Show()
     {
         this.gameObject.SetActive(true);
+        this.openButton.SetActive(false);
     }
 
     public void Hide()
     {
         this.gameObject.SetActive(false);
+        this.openButton.SetActive(true);
+     
+        BuildingPlacementUI.currentBuildingType = null;
     }
 
     private void Build(BuildingType type)
     {
-        Debug.Log($"Select place for building {type}");
+        Image image;
+
+        if (BuildingPlacementUI.currentBuildingType != null)
+        { 
+            image = this.GetBuildingImage((BuildingType)BuildingPlacementUI.currentBuildingType);
+            image.color = new Color(0, 0, 0);
+        }
+
+        BuildingPlacementUI.currentBuildingType = type;
+
+        image = this.GetBuildingImage(type);
+        image.color = new Color(255, 255, 255);
     }
 
     public void Build_House()
@@ -97,5 +155,27 @@ public class BuildingMenuChoice : MonoBehaviour
     public void Build_AirPurificationStation()
     {
         this.Build(BuildingType.AirPurificationStation);
+    }
+
+    private Image GetBuildingImage(BuildingType type)
+    {
+        GameObject imageObject;
+
+        if (type == BuildingType.House)
+            imageObject = this.buildHouse;
+        else if (type == BuildingType.Mine)
+            imageObject = this.buildMine;
+        else if (type == BuildingType.PowerStation)
+            imageObject = this.buildPowerStation;
+        else if (type == BuildingType.GreenHouse)
+            imageObject = this.buildGreenHouse;
+        else if (type == BuildingType.ShipDock)
+            imageObject = this.buildShipDock;
+        else if (type == BuildingType.AirPurificationStation)
+            imageObject = this.buildAirPurificationStation;
+        else
+            throw new Exception();
+
+        return imageObject.GetComponent<Image>();
     }
 }

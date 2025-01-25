@@ -4,16 +4,19 @@
 namespace BubbleApi
 {
     public delegate void OnTimerHandler();
+    public delegate void OnTimerErrorHandler(BubbleApiException exception);
 
     public class Interval
     {
         public int ticks;
         public OnTimerHandler handler;
+        public OnTimerErrorHandler? error;
 
-        public Interval(int ticks, OnTimerHandler handler)
+        public Interval(int ticks, OnTimerHandler handler, OnTimerErrorHandler error = null)
         {
             this.ticks = ticks;
             this.handler = handler;
+            this.error = error;
         }
     }
 
@@ -39,9 +42,16 @@ namespace BubbleApi
             foreach (Interval interval in this.intervals.Values)
             {
                 if (this.ticks % interval.ticks < this.speed)
-                    interval.handler();
+                    try
+                    {
+                        interval.handler();
+                    }
+                    catch (BubbleApiException exception)
+                    {
+                        if (interval.error != null)
+                            interval.error(exception);
+                    }
             }
-
             this.ticks += this.speed;
         }
 

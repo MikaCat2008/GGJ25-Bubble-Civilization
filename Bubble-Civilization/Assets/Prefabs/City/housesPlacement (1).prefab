@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7838277511420351913}
+  - component: {fileID: 7919477728762102386}
   m_Layer: 0
   m_Name: housesPlacement (1)
   m_TagString: Untagged
@@ -39,6 +40,18 @@ Transform:
   - {fileID: 4642896934555045399}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7919477728762102386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8586669748283935812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be18702c0a543b34ebea05fcf95e2dee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1779213441294135277
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -86,6 +99,10 @@ PrefabInstance:
     - target: {fileID: 227493479292286821, guid: 9310f48165b130944b4c821bb3ad6f6a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1609788245528237137, guid: 9310f48165b130944b4c821bb3ad6f6a, type: 3}
+      propertyPath: id
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 2225326633854567259, guid: 9310f48165b130944b4c821bb3ad6f6a, type: 3}
       propertyPath: m_Name
@@ -165,6 +182,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1609788245528237137, guid: 9310f48165b130944b4c821bb3ad6f6a, type: 3}
+      propertyPath: id
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 2225326633854567259, guid: 9310f48165b130944b4c821bb3ad6f6a, type: 3}
       propertyPath: m_Name
       value: HousePlacePoint (6)
@@ -242,6 +263,10 @@ PrefabInstance:
     - target: {fileID: 227493479292286821, guid: 9310f48165b130944b4c821bb3ad6f6a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1609788245528237137, guid: 9310f48165b130944b4c821bb3ad6f6a, type: 3}
+      propertyPath: id
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2225326633854567259, guid: 9310f48165b130944b4c821bb3ad6f6a, type: 3}
       propertyPath: m_Name
@@ -321,6 +346,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1609788245528237137, guid: 9310f48165b130944b4c821bb3ad6f6a, type: 3}
+      propertyPath: id
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 2225326633854567259, guid: 9310f48165b130944b4c821bb3ad6f6a, type: 3}
       propertyPath: m_Name
       value: HousePlacePoint (8)
@@ -398,6 +427,10 @@ PrefabInstance:
     - target: {fileID: 227493479292286821, guid: 9310f48165b130944b4c821bb3ad6f6a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1609788245528237137, guid: 9310f48165b130944b4c821bb3ad6f6a, type: 3}
+      propertyPath: id
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2225326633854567259, guid: 9310f48165b130944b4c821bb3ad6f6a, type: 3}
       propertyPath: m_Name
@@ -477,6 +510,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1609788245528237137, guid: 9310f48165b130944b4c821bb3ad6f6a, type: 3}
+      propertyPath: id
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 2225326633854567259, guid: 9310f48165b130944b4c821bb3ad6f6a, type: 3}
       propertyPath: m_Name
       value: HousePlacePoint (5)
@@ -555,6 +592,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1609788245528237137, guid: 9310f48165b130944b4c821bb3ad6f6a, type: 3}
+      propertyPath: id
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 2225326633854567259, guid: 9310f48165b130944b4c821bb3ad6f6a, type: 3}
       propertyPath: m_Name
       value: HousePlacePoint (4)
@@ -632,6 +673,10 @@ PrefabInstance:
     - target: {fileID: 227493479292286821, guid: 9310f48165b130944b4c821bb3ad6f6a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1609788245528237137, guid: 9310f48165b130944b4c821bb3ad6f6a, type: 3}
+      propertyPath: id
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2225326633854567259, guid: 9310f48165b130944b4c821bb3ad6f6a, type: 3}
       propertyPath: m_Name

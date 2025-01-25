@@ -35,7 +35,7 @@ public class TimePanel : MonoBehaviour
 
         this.dayText.text = this.dateTime.Day.ToString();
         this.monthText.text = this.GetMonthString();
-        this.yearText.text = $"{this.dateTime.Year} р.";
+        this.yearText.text = this.dateTime.Year.ToString();
     }
 
     private string GetMonthString()

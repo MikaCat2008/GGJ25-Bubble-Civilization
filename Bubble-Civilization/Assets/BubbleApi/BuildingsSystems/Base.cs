@@ -17,6 +17,8 @@ namespace BubbleApi
 
         public virtual void OnUpdate(Building building, Bubble bubble) { }
 
+        public virtual void StartBuilding(int id, Bubble bubble) { }
+
         public virtual Building Build(int id, Bubble bubble) 
         {
             return new Building(id);

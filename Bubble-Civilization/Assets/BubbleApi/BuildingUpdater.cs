@@ -117,7 +117,7 @@ namespace BubbleApi
                     BuildingSystem buildingSystem = this.systems.GetBuildingSystem(timeout.type);
                     Building building = buildingSystem.Build(timeout.id, bubble);
 
-                    this.OnBuildingDone.Invoke(building, bubble);
+                    this.OnBuildingDone?.Invoke(building, bubble);
                 }
             }
 

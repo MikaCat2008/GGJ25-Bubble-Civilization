@@ -91,16 +91,16 @@ public class Window : MonoBehaviour
 
         if (buildingType == BuildingType.House)
             return this.houseWindow.GetComponent<BuildingMenu_House>();
-        //else if (buildingType == BuildingType.Mine)
-        //    return this.mineWindow.GetComponent<BuildingMenu_Mine>();
-        //else if (buildingType == BuildingType.PowerStation)
-        //    return this.powerStationWindow.GetComponent<BuildingMenu_PowerStation>();
-        //else if (buildingType == BuildingType.GreenHouse)
-        //    return this.greenHouseWindow.GetComponent<BuildingMenu_GreenHouse>();
-        //else if (buildingType == BuildingType.ShipDock)
-        //    return this.shipDockWindow.GetComponent<BuildingMenu_ShipDock>();
-        //else if (buildingType == BuildingType.AirPurificationStation)
-        //    return this.airPurificationStationWindow.GetComponent<BuildingMenu_AirPurification>();
+        else if (buildingType == BuildingType.Mine)
+            return this.mineWindow.GetComponent<BuildingMenu_Mine>();
+        else if (buildingType == BuildingType.PowerStation)
+            return this.powerStationWindow.GetComponent<BuildingMenu_PowerStation>();
+        else if (buildingType == BuildingType.GreenHouse)
+            return this.greenHouseWindow.GetComponent<BuildingMenu_GreenHouse>();
+        else if (buildingType == BuildingType.ShipDock)
+            return this.shipDockWindow.GetComponent<BuildingMenu_ShipDock>();
+        else if (buildingType == BuildingType.AirPurificationStation)
+            return this.airPurificationStationWindow.GetComponent<BuildingMenu_AirPurification>();
         else
             throw new Exception();
     }

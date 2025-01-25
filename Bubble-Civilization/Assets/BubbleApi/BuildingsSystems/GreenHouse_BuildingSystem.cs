@@ -7,7 +7,7 @@
             this.Generate(building, bubble);
         }
 
-        public void StartBuilding(int id, Bubble bubble)
+        public override void StartBuilding(int id, Bubble bubble)
         {
             this.actionUpdater.ProcessAction(bubble, ActionType.GreenHouse_Build);
 
@@ -76,7 +76,7 @@
             }
             else if (generatingMode == GeneratingMode.Oxygen)
             {
-                bubble.resources.oxygen += data.count;
+                bubble.resources.oxygen += 5 * data.count;
             }
             else if (generatingMode == GeneratingMode.Materials)
             {
