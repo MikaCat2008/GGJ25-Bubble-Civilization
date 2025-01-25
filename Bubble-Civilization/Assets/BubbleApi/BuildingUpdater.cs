@@ -49,10 +49,7 @@ namespace BubbleApi
             bool status = new Random().Next(0, 108000 / GlobalStorage.storage.timer.speed) == 0;
 
             if (status)
-            {
-                this.systems.building.BreakBuilding(building);
-                this.OnBreak?.Invoke(building, bubble);
-            }
+                this.BreakBuilding(building, bubble);
 
             return status;
         }
@@ -68,14 +65,20 @@ namespace BubbleApi
                 return;
         }
 
-        public void DestroyBuilding(Building building, Bubble bubble)
+        public void BreakBuilding(Building building, Bubble bubble)
         {
-            this.OnDestroyed?.Invoke(building, bubble);
+            this.systems.building.BreakBuilding(building);
+            this.OnBreak?.Invoke(building, bubble);
         }
 
         public void RepairBuilding(Building building, Bubble bubble)
         {
             this.OnRepaired?.Invoke(building, bubble);
+        }
+
+        public void DestroyBuilding(Building building, Bubble bubble)
+        {
+            this.OnDestroyed?.Invoke(building, bubble);
         }
 
         public void StartBuilding(int id, Bubble bubble, BuildingType type)
@@ -126,10 +129,21 @@ namespace BubbleApi
                     .Where((v, i) => !toDeleteSet.Contains(i))
                     .ToList();
 
+            if (bubble.resources.food <= 0)
+                throw new BubbleApiException(
+                    BubbleApiExceptionType.LackOfFood
+                );
+
+            if (bubble.resources.oxygen > 100)
+                bubble.resources.oxygen = 100;
+
             if (bubble.resources.oxygen <= 0)
                 throw new BubbleApiException(
                     BubbleApiExceptionType.LackOfOxygen
                 );
+
+            if (bubble.resources.pollution < 0)
+                bubble.resources.pollution = 0;
 
             if (bubble.resources.pollution >= 1000)
                 throw new BubbleApiException(

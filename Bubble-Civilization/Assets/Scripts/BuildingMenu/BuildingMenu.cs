@@ -28,6 +28,8 @@ public class BuildingMenu : MonoBehaviour
             Vector2 mousePosition = Input.mousePosition;
 
             this.rectTransform.position = this.menuHoldPosition + (mousePosition - this.mouseHoldPosition);
+
+            WindowManager.window.windowPosition = this.rectTransform.position;
         }
     }
 
@@ -60,6 +62,11 @@ public class BuildingMenu : MonoBehaviour
 
     public virtual void Show()
     {
+        this.rectTransform = this.gameObject.GetComponent<RectTransform>();
+
+        Vector2 windowPosition = WindowManager.window.windowPosition;
+        this.rectTransform.position = windowPosition;
+
         this.gameObject.SetActive(true);
     }
 

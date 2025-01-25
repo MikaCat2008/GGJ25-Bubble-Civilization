@@ -8,6 +8,7 @@ namespace BubbleApi
         AnotherBuildingType,
         BuildingIsFull,
         TooMuchPollution,
+        LackOfFood,
         LackOfOxygen,
         LackOfPopulation,
         NotEnoughResources,

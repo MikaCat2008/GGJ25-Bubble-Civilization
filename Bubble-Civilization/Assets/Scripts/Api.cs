@@ -32,10 +32,14 @@ public class Api : MonoBehaviour
         };
         GlobalStorage.buildingUpdater.OnBreak += (Building building, Bubble bubble) =>
         {
+            Debug.Log(GlobalStorage.systems.GetBuildingSystem(building.GetBuildingType()).BuildingToString(building));
+
             Building activeBuilding = WindowManager.GetActiveBuilding();
 
             if (building == activeBuilding)
                 WindowManager.SetErrorMessage("");
+
+            BuildingPlacementUI.SetBuildingStatus(building.id, BuildingStatus.Broken);
         };
         GlobalStorage.buildingUpdater.OnRepaired += (Building building, Bubble bubble) =>
         {
@@ -43,11 +47,14 @@ public class Api : MonoBehaviour
 
             if (building == activeBuilding)
                 WindowManager.SetErrorMessage("");
-        };
 
-        GlobalStorage.resourcesUpdater.OnFuelChanged += (int value) =>
+            BuildingPlacementUI.SetBuildingStatus(building.id, BuildingStatus.Ok);
+        };
+        GlobalStorage.buildingUpdater.OnDestroyed += (Building building, Bubble bubble) =>
         {
-            Debug.Log(value);
+            Building activeBuilding = WindowManager.GetActiveBuilding();
+
+            BuildingPlacementUI.SetBuildingType(building.id, BuildingType.Empty);
         };
     }
 
@@ -69,7 +76,7 @@ public class Api : MonoBehaviour
 
             Debug.Log(exception.type);
 
-            SceneManager.LoadScene("MainMenuScene"); ;
+            SceneManager.LoadScene("MainMenuScene");
 
             return;
         }

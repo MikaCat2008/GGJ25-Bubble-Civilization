@@ -74,4 +74,14 @@ public class HousePlacePoint : MonoBehaviour
 
         spriteRenderer.sprite = sprite;
     }
+
+    public void SetBuildingStatus(BuildingStatus status)
+    {
+        SpriteRenderer spriteRenderer = this.building.GetComponent<SpriteRenderer>();
+
+        if (status == BuildingStatus.Ok)
+            spriteRenderer.color = new Color(255, 255, 255);
+        else
+            spriteRenderer.color = new Color(255, 0, 0);
+    }
 }

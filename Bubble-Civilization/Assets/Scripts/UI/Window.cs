@@ -47,6 +47,7 @@ public class Window : MonoBehaviour
     [SerializeField] GameObject shipDockWindow;
     [SerializeField] GameObject airPurificationStationWindow;
 
+    public Vector2 windowPosition;
     public Building? activeBuilding;
     public BuildingMenuChoice buildingMenuChoice;
 
@@ -54,6 +55,7 @@ public class Window : MonoBehaviour
     {
         WindowManager.window = this;
 
+        this.windowPosition = new Vector2(200, 200);
         this.buildingMenuChoice = buildingMenuChoiceElement.GetComponent<BuildingMenuChoice>();
     }
 

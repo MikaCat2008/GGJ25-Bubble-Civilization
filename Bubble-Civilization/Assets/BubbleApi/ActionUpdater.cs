@@ -27,7 +27,7 @@ namespace BubbleApi
                     if (resource < 0 && (-resource) > bubbleResources[i])
                     {
                         if (building != null)
-                            GlobalStorage.systems.building.BreakBuilding(building);
+                            GlobalStorage.buildingUpdater.BreakBuilding(building, bubble);
 
                         throw new BubbleApiException(
                             BubbleApiExceptionType.NotEnoughResources

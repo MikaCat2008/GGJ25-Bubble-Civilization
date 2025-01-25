@@ -108,6 +108,9 @@ public class BuildingMenuChoice : MonoBehaviour
         this.gameObject.SetActive(false);
         this.openButton.SetActive(true);
      
+        Image image = this.GetBuildingImage((BuildingType)BuildingPlacementUI.currentBuildingType);
+        image.color = new Color(255, 255, 255);
+    
         BuildingPlacementUI.currentBuildingType = null;
     }
 
@@ -118,13 +121,13 @@ public class BuildingMenuChoice : MonoBehaviour
         if (BuildingPlacementUI.currentBuildingType != null)
         { 
             image = this.GetBuildingImage((BuildingType)BuildingPlacementUI.currentBuildingType);
-            image.color = new Color(0, 0, 0);
+            image.color = new Color(255, 255, 255);
         }
 
         BuildingPlacementUI.currentBuildingType = type;
 
         image = this.GetBuildingImage(type);
-        image.color = new Color(255, 255, 255);
+        image.color = new Color(0, 255, 0);
     }
 
     public void Build_House()
