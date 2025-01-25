@@ -1,0 +1,1014 @@
+fileFormatVersion: 2
+guid: 51a982ad8f08afc498383f07e2108d7e
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 1030890181082907829
+    second: _0002_glares_0
+  - first:
+      213: -7263817459723428902
+    second: _0002_glares_1
+  - first:
+      213: 2260002824809211548
+    second: _0002_glares_2
+  - first:
+      213: 3116021026433072825
+    second: _0002_glares_3
+  - first:
+      213: 440145805744169134
+    second: _0002_glares_4
+  - first:
+      213: 1380232978994033731
+    second: _0002_glares_5
+  - first:
+      213: -802507547794430500
+    second: _0002_glares_6
+  - first:
+      213: -6328058632604393324
+    second: _0002_glares_7
+  - first:
+      213: -5093169618868768771
+    second: _0002_glares_8
+  - first:
+      213: 6610283384336167660
+    second: _0002_glares_9
+  - first:
+      213: -7573582182437589154
+    second: _0002_glares_10
+  - first:
+      213: -2195643974371241173
+    second: _0002_glares_11
+  - first:
+      213: -1612511048776440633
+    second: _0002_glares_12
+  - first:
+      213: -2995663426113294263
+    second: _0002_glares_13
+  - first:
+      213: -1921214415798619932
+    second: _0002_glares_14
+  - first:
+      213: -7096635432999111909
+    second: _0002_glares_15
+  - first:
+      213: 6054265055534824818
+    second: _0002_glares_16
+  - first:
+      213: -2413734742089013172
+    second: _0002_glares_17
+  - first:
+      213: -4836522766822150244
+    second: _0002_glares_18
+  - first:
+      213: -1419848273668530005
+    second: _0002_glares_19
+  - first:
+      213: -175827398015847987
+    second: _0002_glares_20
+  - first:
+      213: -3582462361471583561
+    second: _0002_glares_21
+  - first:
+      213: 4548400479984481662
+    second: _0002_glares_22
+  - first:
+      213: 7058630831974644421
+    second: _0002_glares_23
+  - first:
+      213: -1370066646484966687
+    second: _0002_glares_24
+  - first:
+      213: 8985291199116440341
+    second: _0002_glares_25
+  - first:
+      213: 6944432543922220420
+    second: _0002_glares_26
+  - first:
+      213: -1122830948219168637
+    second: _0002_glares_27
+  - first:
+      213: -7470792369402942636
+    second: _0002_glares_28
+  - first:
+      213: 5422415016910485494
+    second: _0002_glares_29
+  - first:
+      213: -8780800445324648567
+    second: _0002_glares_30
+  - first:
+      213: 7673060489718374801
+    second: _0002_glares_31
+  - first:
+      213: 3706689944212000848
+    second: _0002_glares_32
+  - first:
+      213: -6116508032676285353
+    second: _0002_glares_33
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 0
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 216
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: _0002_glares_0
+      rect:
+        serializedVersion: 2
+        x: 1835
+        y: 0
+        width: 1340
+        height: 1932
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b482e568257e4e00800000000000000
+      internalID: 1030890181082907829
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _0002_glares_1
+      rect:
+        serializedVersion: 2
+        x: 2079
+        y: 1913
+        width: 12
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: adb97e7718cb13b90800000000000000
+      internalID: -7263817459723428902
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _0002_glares_2
+      rect:
+        serializedVersion: 2
+        x: 2079
+        y: 1909
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c96e12c58942d5f10800000000000000
+      internalID: 2260002824809211548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _0002_glares_3
+      rect:
+        serializedVersion: 2
+        x: 2096
+        y: 1909
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9bef0393d945e3b20800000000000000
+      internalID: 3116021026433072825
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _0002_glares_4
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 1908
+        width: 18
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ea062c04746bb1600800000000000000
+      internalID: 440145805744169134
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _0002_glares_5
+      rect:
+        serializedVersion: 2
+        x: 2120
+        y: 1904
+        width: 8
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 344f734e492972310800000000000000
+      internalID: 1380232978994033731
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _0002_glares_6
+      rect:
+        serializedVersion: 2
+        x: 1867
+        y: 1762
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cd5a42c13abecd4f0800000000000000
+      internalID: -802507547794430500
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _0002_glares_7
+      rect:
+        serializedVersion: 2
+        x: 1857
+        y: 1746
+        width: 9
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 49065cd73383e28a0800000000000000
+      internalID: -6328058632604393324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _0002_glares_8
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 1
+        width: 957
+        height: 1739
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dffe386673d6159b0800000000000000
+      internalID: -5093169618868768771
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _0002_glares_9
+      rect:
+        serializedVersion: 2
+        x: 1847
+        y: 1735
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ce2360c17b17cbb50800000000000000
+      internalID: 6610283384336167660
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _0002_glares_10
+      rect:
+        serializedVersion: 2
+        x: 1864
+        y: 1716
+        width: 15
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e5f6492b12b35e690800000000000000
+      internalID: -7573582182437589154
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _0002_glares_11
+      rect:
+        serializedVersion: 2
+        x: 1861
+        y: 1705
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b23106630718781e0800000000000000
+      internalID: -2195643974371241173
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _0002_glares_12
+      rect:
+        serializedVersion: 2
+        x: 1862
+        y: 1680
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c4a94d9eb53f99e0800000000000000
+      internalID: -1612511048776440633
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _0002_glares_13
+      rect:
+        serializedVersion: 2
+        x: 1655
+        y: 1022
+        width: 219
+        height: 629
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 94033e35cf34d66d0800000000000000
+      internalID: -2995663426113294263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _0002_glares_14
+      rect:
+        serializedVersion: 2
+        x: 1863
+        y: 1647
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4e0b6f8faa97655e0800000000000000
+      internalID: -1921214415798619932
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _0002_glares_15
+      rect:
+        serializedVersion: 2
+        x: 1656
+        y: 989
+        width: 35
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b1333ab5cafa38d90800000000000000
+      internalID: -7096635432999111909
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _0002_glares_16
+      rect:
+        serializedVersion: 2
+        x: 1663
+        y: 978
+        width: 21
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 27db63bbdf1150450800000000000000
+      internalID: 6054265055534824818
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _0002_glares_17
+      rect:
+        serializedVersion: 2
+        x: 1665
+        y: 947
+        width: 18
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c48e3c36a01b08ed0800000000000000
+      internalID: -2413734742089013172
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _0002_glares_18
+      rect:
+        serializedVersion: 2
+        x: 1673
+        y: 1002
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c9fe9772b2831ecb0800000000000000
+      internalID: -4836522766822150244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _0002_glares_19
+      rect:
+        serializedVersion: 2
+        x: 1674
+        y: 1005
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba0290d848fab4ce0800000000000000
+      internalID: -1419848273668530005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _0002_glares_20
+      rect:
+        serializedVersion: 2
+        x: 1674
+        y: 995
+        width: 12
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc1fb7fb9e55f8df0800000000000000
+      internalID: -175827398015847987
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _0002_glares_21
+      rect:
+        serializedVersion: 2
+        x: 1675
+        y: 998
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ba77438679884ec0800000000000000
+      internalID: -3582462361471583561
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _0002_glares_22
+      rect:
+        serializedVersion: 2
+        x: 1684
+        y: 1013
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e75f0b9532a2f1f30800000000000000
+      internalID: 4548400479984481662
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _0002_glares_23
+      rect:
+        serializedVersion: 2
+        x: 615
+        y: 562
+        width: 44
+        height: 373
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5caf77ce75b45f160800000000000000
+      internalID: 7058630831974644421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _0002_glares_24
+      rect:
+        serializedVersion: 2
+        x: 3161
+        y: 869
+        width: 9
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e227a9d4ab8cfce0800000000000000
+      internalID: -1370066646484966687
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _0002_glares_25
+      rect:
+        serializedVersion: 2
+        x: 3162
+        y: 826
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 51377ce4dba22bc70800000000000000
+      internalID: 8985291199116440341
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _0002_glares_26
+      rect:
+        serializedVersion: 2
+        x: 1535
+        y: 90
+        width: 18
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 48d65230b949f5060800000000000000
+      internalID: 6944432543922220420
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _0002_glares_27
+      rect:
+        serializedVersion: 2
+        x: 1542
+        y: 97
+        width: 15
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 388d49c9337ea60f0800000000000000
+      internalID: -1122830948219168637
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _0002_glares_28
+      rect:
+        serializedVersion: 2
+        x: 1556
+        y: 52
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 45be9070ce9625890800000000000000
+      internalID: -7470792369402942636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _0002_glares_29
+      rect:
+        serializedVersion: 2
+        x: 1543
+        y: 35
+        width: 10
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6f771bb8ab9404b40800000000000000
+      internalID: 5422415016910485494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _0002_glares_30
+      rect:
+        serializedVersion: 2
+        x: 1548
+        y: 42
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 98f15d48484542680800000000000000
+      internalID: -8780800445324648567
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _0002_glares_31
+      rect:
+        serializedVersion: 2
+        x: 1554
+        y: 42
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 191afbd9cdf2c7a60800000000000000
+      internalID: 7673060489718374801
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _0002_glares_32
+      rect:
+        serializedVersion: 2
+        x: 1550
+        y: 20
+        width: 10
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 050d4498ddec07330800000000000000
+      internalID: 3706689944212000848
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _0002_glares_33
+      rect:
+        serializedVersion: 2
+        x: 1553
+        y: 14
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 754b186d95ccd1ba0800000000000000
+      internalID: -6116508032676285353
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      _0002_glares_0: 1030890181082907829
+      _0002_glares_1: -7263817459723428902
+      _0002_glares_10: -7573582182437589154
+      _0002_glares_11: -2195643974371241173
+      _0002_glares_12: -1612511048776440633
+      _0002_glares_13: -2995663426113294263
+      _0002_glares_14: -1921214415798619932
+      _0002_glares_15: -7096635432999111909
+      _0002_glares_16: 6054265055534824818
+      _0002_glares_17: -2413734742089013172
+      _0002_glares_18: -4836522766822150244
+      _0002_glares_19: -1419848273668530005
+      _0002_glares_2: 2260002824809211548
+      _0002_glares_20: -175827398015847987
+      _0002_glares_21: -3582462361471583561
+      _0002_glares_22: 4548400479984481662
+      _0002_glares_23: 7058630831974644421
+      _0002_glares_24: -1370066646484966687
+      _0002_glares_25: 8985291199116440341
+      _0002_glares_26: 6944432543922220420
+      _0002_glares_27: -1122830948219168637
+      _0002_glares_28: -7470792369402942636
+      _0002_glares_29: 5422415016910485494
+      _0002_glares_3: 3116021026433072825
+      _0002_glares_30: -8780800445324648567
+      _0002_glares_31: 7673060489718374801
+      _0002_glares_32: 3706689944212000848
+      _0002_glares_33: -6116508032676285353
+      _0002_glares_4: 440145805744169134
+      _0002_glares_5: 1380232978994033731
+      _0002_glares_6: -802507547794430500
+      _0002_glares_7: -6328058632604393324
+      _0002_glares_8: -5093169618868768771
+      _0002_glares_9: 6610283384336167660
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
