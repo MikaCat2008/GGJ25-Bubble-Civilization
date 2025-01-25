@@ -13,8 +13,8 @@ public class MainMenu : MonoBehaviour
     
     [SerializeField] GameObject MainMenuBG;
     [SerializeField] GameObject MainMenuContainer;
-    [SerializeField] GameObject GameMenuContainer;
-    [SerializeField] GameObject EndMenuContainer;
+    [SerializeField] GameObject OptionsMenu;
+
 
 
     //private GameObject MainMenuGO;
@@ -43,5 +43,17 @@ public class MainMenu : MonoBehaviour
     public void menuRestart()
     {
         SceneManager.LoadScene("GameScene");
+    }
+
+    public void menuOptionsOn()
+    {
+        MainMenuBG.SetActive(true);
+        OptionsMenu.SetActive(true);
+    }
+
+    public void menuOptionsOff()
+    {
+        MainMenuBG.SetActive(false);
+        OptionsMenu.SetActive(false);
     }
 }
