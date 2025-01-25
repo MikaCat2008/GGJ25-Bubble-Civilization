@@ -166,5 +166,11 @@ namespace BubbleApi
 
             return true;
         }
+
+        public static void Reinitialize()
+        {
+            GlobalStorage.initialized = false;
+            GlobalStorage.Initialize();
+        }
     }
 }

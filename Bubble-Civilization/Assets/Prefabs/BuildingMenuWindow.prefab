@@ -567,9 +567,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: BuildingMenu, Assembly-CSharp
-        m_MethodName: Hide
+      - m_Target: {fileID: 721687833702130847}
+        m_TargetAssemblyTypeName: BuildingMenuChoice, Assembly-CSharp
+        m_MethodName: Build_House
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2505,9 +2505,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: BuildingMenu, Assembly-CSharp
-        m_MethodName: Hide
+      - m_Target: {fileID: 721687833702130847}
+        m_TargetAssemblyTypeName: BuildingMenuChoice, Assembly-CSharp
+        m_MethodName: Build_Mine
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2639,9 +2639,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: BuildingMenu, Assembly-CSharp
-        m_MethodName: Hide
+      - m_Target: {fileID: 721687833702130847}
+        m_TargetAssemblyTypeName: BuildingMenuChoice, Assembly-CSharp
+        m_MethodName: Build_ShipDock
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3571,9 +3571,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: BuildingMenu, Assembly-CSharp
-        m_MethodName: Hide
+      - m_Target: {fileID: 721687833702130847}
+        m_TargetAssemblyTypeName: BuildingMenuChoice, Assembly-CSharp
+        m_MethodName: Build_AirPurificationStation
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3983,9 +3983,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: BuildingMenu, Assembly-CSharp
-        m_MethodName: Hide
+      - m_Target: {fileID: 721687833702130847}
+        m_TargetAssemblyTypeName: BuildingMenuChoice, Assembly-CSharp
+        m_MethodName: Build_PowerStation
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6485,9 +6485,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: BuildingMenu, Assembly-CSharp
-        m_MethodName: Hide
+      - m_Target: {fileID: 721687833702130847}
+        m_TargetAssemblyTypeName: BuildingMenuChoice, Assembly-CSharp
+        m_MethodName: Build_GreenHouse
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

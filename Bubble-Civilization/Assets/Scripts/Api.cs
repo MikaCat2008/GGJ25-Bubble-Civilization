@@ -1,5 +1,6 @@
 ﻿using BubbleApi;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 public class Api : MonoBehaviour
@@ -42,8 +43,19 @@ public class Api : MonoBehaviour
         if (GlobalStorage.storage.timer.speed == 0)
             return;
 
-        foreach (Bubble bubble in GlobalStorage.storage.bubbles.Values)
-            GlobalStorage.buildingUpdater.Update(bubble);
+        try
+        {
+            foreach (Bubble bubble in GlobalStorage.storage.bubbles.Values)
+                GlobalStorage.buildingUpdater.Update(bubble);
+        }
+        catch (BubbleApiException exception)
+        {
+            GlobalStorage.Reinitialize();
+
+            SceneManager.LoadScene("MainMenuScene");
+
+            return;
+        }
 
         GlobalStorage.storage.timer.Tick();
     }
