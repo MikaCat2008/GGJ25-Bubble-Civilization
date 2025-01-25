@@ -26,11 +26,6 @@ public class Api : MonoBehaviour
             if (building == activeBuilding)
                 WindowManager.SetErrorMessage("");
         };
-
-        GlobalStorage.resourcesUpdater.OnPollutionChanged += (int value) =>
-        {
-            Debug.Log($"Забруднення: {value}");
-        };
     }
 
     private void Start()

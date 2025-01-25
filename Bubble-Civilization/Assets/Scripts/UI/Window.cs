@@ -12,6 +12,11 @@ public static class WindowManager
         WindowManager.window.OpenBuildingMenu(building);
     }
 
+    public static void OpenBuildingMenuChoice()
+    {
+        WindowManager.window.OpenBuildingMenuChoice();
+    }
+
     public static Building? GetActiveBuilding()
     {
         return WindowManager.window.activeBuilding;
@@ -33,6 +38,8 @@ public static class WindowManager
 
 public class Window : MonoBehaviour
 {
+    [SerializeField] GameObject buildingMenuChoiceElement;
+
     [SerializeField] GameObject houseWindow;
     [SerializeField] GameObject mineWindow;
     [SerializeField] GameObject powerStationWindow;
@@ -41,10 +48,13 @@ public class Window : MonoBehaviour
     [SerializeField] GameObject airPurificationStationWindow;
 
     public Building? activeBuilding;
+    public BuildingMenuChoice buildingMenuChoice;
 
     private void Awake()
     {
         WindowManager.window = this;
+
+        this.buildingMenuChoice = buildingMenuChoiceElement.GetComponent<BuildingMenuChoice>();
     }
 
     public void OpenBuildingMenu(Building? building)
@@ -68,6 +78,11 @@ public class Window : MonoBehaviour
 
         buildingMenu = this.GetBuildingMenu(building);
         buildingMenu.Show();
+    }
+
+    public void OpenBuildingMenuChoice()
+    {
+        this.buildingMenuChoice.Show();
     }
 
     public BuildingMenu GetBuildingMenu(Building building)
