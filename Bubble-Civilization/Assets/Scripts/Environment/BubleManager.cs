@@ -1,12 +1,13 @@
 ﻿using BubbleApi;
 using System;
 using UnityEngine;
+using System;
 
 public class BubbleManager : MonoBehaviour
 {
     private Bubble currentBubble;
-
-    //[SerializeField] 
+    public event Action OnPopulationDied;
+    
     void PrintBuildings(string text, Bubble bubble)
     {
         string[] buildings = new string[bubble.buildings.container.Count];
@@ -28,7 +29,7 @@ public class BubbleManager : MonoBehaviour
     {
         currentBubble = new Bubble();
         currentBubble.SetStartResources();
-
+        currentBubble.OnPopulationDied += OnPopulationDiedHandler;
 
         currentBubble.ResourcesToDebugString();
 
@@ -49,5 +50,11 @@ public class BubbleManager : MonoBehaviour
     public Bubble GetCurrentBubble()
     {
         return currentBubble;
+    }
+
+    private void OnPopulationDiedHandler()
+    {
+        currentBubble.OnPopulationDied -= OnPopulationDiedHandler;
+        OnPopulationDied?.Invoke();
     }
 }

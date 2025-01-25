@@ -29,6 +29,11 @@ public class Resource
     public void DecreaseQuantity(int Amount)
     {
         this.Quantity -= Amount;
+        if (this.Quantity <= 0)
+        {
+            this.Quantity = 0;
+        }
+
         OnResourceQuantityChanged?.Invoke(this.Quantity);
     }
 
@@ -40,6 +45,7 @@ public class PopulationResource : Resource
     private float dieFromSufficationCoof = 0.1f;
     private float dieFromHungerCoof = 0.1f;
 
+    public event Action OnPopulationDied;
     public PopulationResource()
     {
         Type = ResourceType.Population;
@@ -49,11 +55,13 @@ public class PopulationResource : Resource
 
     public void Suffocate()
     {
-        float deadPeopleAmount = dieFromSufficationCoof*Quantity;
-        int changeAmount = (int)MathF.Floor(deadPeopleAmount);
-        if (Quantity > changeAmount)
+        float deadPeopleAmount = dieFromSufficationCoof * Quantity;
+        int changeAmount = (int)MathF.Ceiling(deadPeopleAmount);
+        this.DecreaseQuantity(changeAmount);
+
+        if (Quantity <= 0)
         {
-            this.DecreaseQuantity(changeAmount);
+            OnPopulationDied?.Invoke();
         }
     }
 
@@ -61,9 +69,11 @@ public class PopulationResource : Resource
     {
         float deadPeopleAmount = dieFromHungerCoof * Quantity;
         int changeAmount = (int)MathF.Floor(deadPeopleAmount);
-        if (Quantity > changeAmount)
+        this.DecreaseQuantity(changeAmount);
+
+        if (Quantity <= 0)
         {
-            this.DecreaseQuantity(changeAmount);
+            OnPopulationDied?.Invoke();
         }
     }
 }

@@ -189,7 +189,7 @@ public class GameplayTimeManager : MonoBehaviour
         currentDayDelay = DayDelaySpeedOne;
         Resume();
      
-        GlobalStorage.storage.timer.speed = 1;
+        //GlobalStorage.storage.timer.speed = 1;
     }
 
     public void SetSpeedTwo()
@@ -197,7 +197,7 @@ public class GameplayTimeManager : MonoBehaviour
         currentDayDelay = DayDelaySpeedTwo;
         Resume();
      
-        GlobalStorage.storage.timer.speed = 2;
+        //GlobalStorage.storage.timer.speed = 2;
     }
 
     public void SetSpeedThree()
@@ -205,6 +205,6 @@ public class GameplayTimeManager : MonoBehaviour
         currentDayDelay = DayDelaySpeedThree;
         Resume();
         
-        GlobalStorage.storage.timer.speed = 4;
+        //GlobalStorage.storage.timer.speed = 4;
     }
 }

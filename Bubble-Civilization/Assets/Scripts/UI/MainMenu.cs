@@ -11,6 +11,13 @@ public class MainMenu : MonoBehaviour
     [SerializeField] AudioSource AudioSourceGO;
     [SerializeField] Slider volumeSlider;
 
+
+    [SerializeField] GameObject MainMenuBG;
+    [SerializeField] GameObject MainMenuContainer;
+    [SerializeField] GameObject GameMenuContainer;
+    [SerializeField] GameObject EndMenuContainer;
+
+
     //private GameObject MainMenuGO;
     public void Start()
     {
@@ -33,4 +40,17 @@ public class MainMenu : MonoBehaviour
         Application.Quit();
     }
 
+    public void menuEngGame()
+    {
+        this.gameObject.SetActive(true);
+        MainMenuBG.SetActive(true);
+        MainMenuContainer.SetActive(false);
+        GameMenuContainer.SetActive(false);
+        EndMenuContainer.SetActive(true);
+    }
+
+    public static void menuRestart()
+    {
+        //showEndGameScreen
+    }
 }

@@ -4,7 +4,9 @@ namespace BubbleApi
 {
     public class Bubble
     {
+        //not inUse
         public static event Action OnPlayerEntered;
+        public event Action OnPopulationDied;
 
         public PopulationResource populationResource;
         public FoodResource foodResource;
@@ -27,9 +29,11 @@ namespace BubbleApi
         {
             populationResource.Quantity = 50;
             foodResource.Quantity = 100;
-            oxygenResource.Quantity = 1000;
+            oxygenResource.Quantity = 100;
             materialsResource.Quantity = 100;
             fuelResource.Quantity = 100;
+
+            populationResource.OnPopulationDied += OnPopulationDiedHandler;
         }
 
         public string ResourcesToDebugString()
@@ -47,13 +51,12 @@ namespace BubbleApi
         public void BreathPerDay()
         {
             float breathAmount = OxygenForPersonPerDay * populationResource.Quantity;
-            int changeAmount = (int)MathF.Floor(breathAmount);
+            int changeAmount = (int)MathF.Ceiling(breathAmount);
 
-            if (oxygenResource.Quantity > changeAmount + 1.0f)
-            {
-                oxygenResource.DecreaseQuantity(changeAmount);
-            }
-            else
+
+            oxygenResource.DecreaseQuantity(changeAmount);
+            
+            if (oxygenResource.Quantity <= 0)
             {
                 populationResource.Suffocate();
             }
@@ -72,6 +75,12 @@ namespace BubbleApi
             {
                 populationResource.Starve();
             }
+        }
+
+        private void OnPopulationDiedHandler()
+        {
+            populationResource.OnPopulationDied -= OnPopulationDiedHandler;
+            OnPopulationDied?.Invoke();
         }
 
 
