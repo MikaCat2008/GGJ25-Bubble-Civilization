@@ -30,11 +30,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 3443601901293899409}
   - {fileID: 7865516098783507568}
-  - {fileID: 5994377401327062112}
   - {fileID: 3149205177628074355}
+  - {fileID: 5994377401327062112}
   - {fileID: 1033547608776139737}
+  - {fileID: 3443601901293899409}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
@@ -112,7 +112,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5633433708077017280, guid: c790570742de63a4e9ff3993b8c1d30b, type: 3}
       propertyPath: m_Name
-      value: OxygenPanel
+      value: EnergyPanel
       objectReference: {fileID: 0}
     - target: {fileID: 5704259485169231654, guid: c790570742de63a4e9ff3993b8c1d30b, type: 3}
       propertyPath: m_AnchorMax.y

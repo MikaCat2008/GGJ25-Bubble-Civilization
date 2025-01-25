@@ -7,11 +7,6 @@ using UnityEngine.UI;
 
 public class TimePanel : MonoBehaviour
 {
-    [SerializeField] public TMP_Text pauseButtonText;
-    [SerializeField] public TMP_Text speed1ButtonText;
-    [SerializeField] public TMP_Text speed2ButtonText;
-    [SerializeField] public TMP_Text speed3ButtonText;
-
     [SerializeField] public TMP_Text dayText;
     [SerializeField] public TMP_Text monthText;
     [SerializeField] public TMP_Text yearText;
@@ -30,7 +25,6 @@ public class TimePanel : MonoBehaviour
     private void Start()
     {
         this.dateTime = new DateTime(1312, 1, 1);
-        this.currentActiveButtonText = this.pauseButtonText;
 
         GlobalStorage.storage.timer.CreateInterval(60, this.UpdateDate);
     }
@@ -62,29 +56,20 @@ public class TimePanel : MonoBehaviour
     public void Timer_Pause()
     {
         GlobalStorage.storage.timer.speed = 0;
-
-        this.SetActiveButtonText(this.pauseButtonText);
     }
 
     public void Timer_Speed1()
     {
         GlobalStorage.storage.timer.speed = 1;
-    
-        this.SetActiveButtonText(this.speed1ButtonText);
     }
 
     public void Timer_Speed2()
     {
         GlobalStorage.storage.timer.speed = 2;
-    
-        this.SetActiveButtonText(this.speed2ButtonText);
     }
 
     public void Timer_Speed3()
     {
-        //GlobalStorage.storage.timer.speed = 4;
-        GlobalStorage.storage.timer.speed = 99;
-
-        this.SetActiveButtonText(this.speed3ButtonText);
+        GlobalStorage.storage.timer.speed = 4;
     }
 }

@@ -27,37 +27,9 @@ public class Api : MonoBehaviour
                 WindowManager.SetErrorMessage("");
         };
 
-        GlobalStorage.resourcesUpdater.OnFoodChanged += (int value) => 
-        {
-            Debug.Log($"Їжа: {value}");
-        };
-        GlobalStorage.resourcesUpdater.OnFuelChanged += (int value) =>
-        {
-            Debug.Log($"Паливо: {value}");
-        };
-        GlobalStorage.resourcesUpdater.OnEnergyChanged += (int value) =>
-        {
-            Debug.Log($"Енергія: {value}");
-        };
-        GlobalStorage.resourcesUpdater.OnOxygenChanged += (int value) =>
-        {
-            Debug.Log($"Кисень: {value}");
-        };
-        GlobalStorage.resourcesUpdater.OnMaterialsChanged += (int value) =>
-        {
-            Debug.Log($"Матеріали: {value}");
-        };
         GlobalStorage.resourcesUpdater.OnPollutionChanged += (int value) =>
         {
             Debug.Log($"Забруднення: {value}");
-        };
-        GlobalStorage.resourcesUpdater.OnPopulationChanged += (int value) =>
-        {
-            Debug.Log($"Населення: {value}");
-        };
-        GlobalStorage.resourcesUpdater.OnFreePopulationChanged += (int value) =>
-        {
-            Debug.Log($"Вільне населення: {value}");
         };
     }
 

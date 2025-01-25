@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using BubbleApi;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -10,6 +10,14 @@ public class MainMenu : MonoBehaviour
 {
     [SerializeField] Slider volumeSlider;
 
+    
+    [SerializeField] GameObject MainMenuBG;
+    [SerializeField] GameObject MainMenuContainer;
+    [SerializeField] GameObject GameMenuContainer;
+    [SerializeField] GameObject EndMenuContainer;
+
+
+    //private GameObject MainMenuGO;
     public void Start()
     {
         volumeSlider.value = 0.4f;

@@ -7,7 +7,7 @@ public class ResourceNode : MonoBehaviour
     //Закинута база
 
 
-    private void OnMouseDown()
+    public void MouseClick()
     {
         Debug.Log("You clicked on resource.", this);
     }
