@@ -8,6 +8,15 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Bubble.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 1
+    path: Assets/Scenes/GameScenes/MainMenuScene.unity
+    guid: a94adb7367b61e1468a226e5d85575f1
+  - enabled: 1
+    path: Assets/Scenes/GameScenes/GameScene.unity
+    guid: 9caf2de89956f5a4caeaa2e8b6506cbf
+  - enabled: 1
+    path: Assets/Scenes/GameScenes/EndGameScene.unity
+    guid: 7ea6f50aa3172d648912defcaf8003d6
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

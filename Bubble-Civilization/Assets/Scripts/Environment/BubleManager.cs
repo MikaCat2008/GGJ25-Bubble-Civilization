@@ -27,13 +27,18 @@ public class BubbleManager : MonoBehaviour
 
     void Awake()
     {
+
+        SetStartBubble();
+
+    }
+
+    public void SetStartBubble()
+    {
         currentBubble = new Bubble();
         currentBubble.SetStartResources();
         currentBubble.OnPopulationDied += OnPopulationDiedHandler;
 
         currentBubble.ResourcesToDebugString();
-
-
     }
 
     private void Start()
@@ -46,6 +51,11 @@ public class BubbleManager : MonoBehaviour
         GameplayTimeManager.OnDayPassed += currentBubble.BreathPerDay;
         GameplayTimeManager.OnDayPassed += currentBubble.EatPerDay;
     }
+    private void UnBind()
+    {
+        GameplayTimeManager.OnDayPassed -= currentBubble.BreathPerDay;
+        GameplayTimeManager.OnDayPassed -= currentBubble.EatPerDay;
+    }
 
     public Bubble GetCurrentBubble()
     {
@@ -54,6 +64,7 @@ public class BubbleManager : MonoBehaviour
 
     private void OnPopulationDiedHandler()
     {
+        UnBind();
         currentBubble.OnPopulationDied -= OnPopulationDiedHandler;
         OnPopulationDied?.Invoke();
     }
