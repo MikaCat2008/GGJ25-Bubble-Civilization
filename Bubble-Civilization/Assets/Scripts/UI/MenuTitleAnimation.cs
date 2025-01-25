@@ -4,7 +4,7 @@ using UnityEngine;
 public class MenuTitleAnimation : MonoBehaviour
 {
 
-    public float animationDelay = 3.0f;
+    public float animationDelay = 2.2f;
     private WaitForSeconds animationDelayWFS;
     private SpriteRenderer spriteRenderer;
 
