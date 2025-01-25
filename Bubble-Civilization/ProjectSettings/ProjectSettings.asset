@@ -12,12 +12,12 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: DefaultCompany
+  companyName: BubbleCityTeam
   productName: BubbleCity
-  defaultCursor: {fileID: 0}
+  defaultCursor: {fileID: 2800000, guid: e371502d30b4b8a44a9f38ef76700f71, type: 3}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
-  m_ShowUnitySplashScreen: 1
+  m_ShowUnitySplashScreen: 0
   m_ShowUnitySplashLogo: 1
   m_SplashScreenOverlayOpacity: 1
   m_SplashScreenAnimation: 1
@@ -45,7 +45,7 @@ PlayerSettings:
   defaultScreenWidth: 1920
   defaultScreenHeight: 1080
   defaultScreenWidthWeb: 960
-  defaultScreenHeightWeb: 600
+  defaultScreenHeightWeb: 540
   m_StereoRenderingPath: 0
   m_ActiveColorSpace: 1
   unsupportedMSAAFallback: 0
@@ -82,7 +82,7 @@ PlayerSettings:
   androidApplicationEntry: 2
   defaultIsNativeResolution: 1
   macRetinaSupport: 1
-  runInBackground: 0
+  runInBackground: 1
   muteOtherAudioSources: 0
   Prepare IOS For Recording: 0
   Force IOS Speakers When Recording: 0
@@ -286,7 +286,14 @@ PlayerSettings:
   AndroidAppBundleSizeToValidate: 150
   AndroidReportGooglePlayAppDependencies: 1
   androidSymbolsSizeThreshold: 800
-  m_BuildTargetIcons: []
+  m_BuildTargetIcons:
+  - m_BuildTarget: 
+    m_Icons:
+    - serializedVersion: 2
+      m_Icon: {fileID: 2800000, guid: f9b1316d8894814439cbadd8529a225e, type: 3}
+      m_Width: 128
+      m_Height: 128
+      m_Kind: 0
   m_BuildTargetPlatformIcons: []
   m_BuildTargetBatching: []
   m_BuildTargetShaderSettings: []
@@ -299,7 +306,14 @@ PlayerSettings:
   openGLRequireES31: 0
   openGLRequireES31AEP: 0
   openGLRequireES32: 0
-  m_TemplateCustomTags: {}
+  m_TemplateCustomTags:
+    PRODUCT_DESCRIPTION: "Bubble Civilization \u2014 \u0446\u0435 \u0430\u0442\u043C\u043E\u0441\u0444\u0435\u0440\u043D\u0430
+      \u043C\u0456\u0441\u0442\u043E\u0431\u0443\u0434\u0456\u0432\u043D\u0430 \u0441\u0442\u0440\u0430\u0442\u0435\u0433\u0456\u044F,
+      \u044F\u043A\u0430 \u043F\u0435\u0440\u0435\u043D\u0435\u0441\u0435 \u0432\u0430\u0441
+      \u0443 \u043F\u0456\u0434\u0432\u043E\u0434\u043D\u0438\u0439 \u0441\u0432\u0456\u0442,
+      \u0434\u0435 \u043B\u044E\u0434\u0441\u0442\u0432\u043E \u0431\u043E\u0440\u0435\u0442\u044C\u0441\u044F
+      \u0437\u0430 \u0432\u0438\u0436\u0438\u0432\u0430\u043D\u043D\u044F \u043F\u0456\u0434
+      \u0441\u043A\u043B\u044F\u043D\u0438\u043C\u0438 \u043A\u0443\u043F\u043E\u043B\u0430\u043C\u0438."
   mobileMTRendering:
     Android: 1
     iPhone: 1
@@ -308,7 +322,10 @@ PlayerSettings:
   m_BuildTargetGroupLightmapSettings: []
   m_BuildTargetGroupLoadStoreDebugModeSettings: []
   m_BuildTargetNormalMapEncoding: []
-  m_BuildTargetDefaultTextureCompressionFormat: []
+  m_BuildTargetDefaultTextureCompressionFormat:
+  - serializedVersion: 3
+    m_BuildTarget: WebGL
+    m_Formats: 05000000
   playModeTestRunnerEnabled: 0
   runPlayModeTestAsEditModeTest: 0
   actionOnDotNetUnhandledException: 1
@@ -554,7 +571,7 @@ PlayerSettings:
   webGLDebugSymbols: 0
   webGLEmscriptenArgs: 
   webGLModulesDirectory: 
-  webGLTemplate: APPLICATION:Default
+  webGLTemplate: APPLICATION:PWA
   webGLAnalyzeBuildSize: 0
   webGLUseEmbeddedResources: 0
   webGLCompressionFormat: 0
@@ -687,11 +704,11 @@ PlayerSettings:
   captureStartupLogs: {}
   activeInputHandler: 2
   windowsGamepadBackendHint: 0
-  cloudProjectId: f7556c8d-06bb-44cb-9919-72fe1d149441
+  cloudProjectId: 
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: BubbleCity 2025-01-21_16-31-26
-  organizationId: dimalogat
+  projectName: 
+  organizationId: 
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}
