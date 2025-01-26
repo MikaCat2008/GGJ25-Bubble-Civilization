@@ -4,13 +4,23 @@ using UnityEngine;
 
 public class OxygenPanel : MonoBehaviour
 {
+    ScalePanel scalePanel;
+
     void Start()
     {
-        ScalePanel scalePanel = GetComponent<ScalePanel>();
+        scalePanel = GetComponent<ScalePanel>();
 
-        GlobalStorage.resourcesUpdater.OnOxygenChanged += (int value) =>
+        if (scalePanel != null )
         {
-            scalePanel.SetValue((float)value / 100f);
-        };
+            GlobalStorage.resourcesUpdater.OnOxygenChanged += (int value) =>
+            {
+                scalePanel.SetValue((float)value / 100f);
+            };
+        }
+        else
+        {
+            Debug.LogWarning("OxygenPanel, scalePanel is null");
+        }
+
     }
 }
