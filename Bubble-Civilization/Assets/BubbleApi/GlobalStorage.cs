@@ -131,28 +131,53 @@ namespace BubbleApi
             GlobalStorage.buildingUpdater = new BuildingUpdater(GlobalStorage.systems);
             GlobalStorage.buildingUpdater.buildingsInfo = new Dictionary<BuildingType, BuildingInfo>()
             {
+                //{ BuildingType.House, new BuildingInfo(
+                //    buildingTime: 5 * 60,
+                //    updateInterval: 10 * 60
+                //) },
+                //{ BuildingType.Mine, new BuildingInfo(
+                //    buildingTime: 10 * 60,
+                //    updateInterval: 10 * 60
+                //) },
+                //{ BuildingType.PowerStation, new BuildingInfo(
+                //    buildingTime: 15 * 60,
+                //    updateInterval: 5 * 60
+                //) },
+                //{ BuildingType.GreenHouse, new BuildingInfo(
+                //    buildingTime: 5 * 60,
+                //    updateInterval: 5 * 60
+                //) },
+                //{ BuildingType.ShipDock, new BuildingInfo(
+                //    buildingTime: 30 * 60,
+                //    updateInterval: 30 * 60
+                //) },
+                //{ BuildingType.AirPurificationStation, new BuildingInfo(
+                //    buildingTime: 10 * 60,
+                //    updateInterval: 10 * 60
+                //) }
+
                 { BuildingType.House, new BuildingInfo(
-                    buildingTime: 5 * 60,
+                    buildingTime: 10 * 10,
                     updateInterval: 10 * 60
                 ) },
                 { BuildingType.Mine, new BuildingInfo(
-                    buildingTime: 10 * 60,
+                    buildingTime: 10 * 18,
                     updateInterval: 10 * 60
                 ) },
                 { BuildingType.PowerStation, new BuildingInfo(
-                    buildingTime: 15 * 60,
-                    updateInterval: 5 * 60
+                    buildingTime: 10 * 18,
+                    updateInterval: 10 * 60
                 ) },
                 { BuildingType.GreenHouse, new BuildingInfo(
-                    buildingTime: 5 * 60,
-                    updateInterval: 5 * 60
+                    buildingTime: 10 * 18,
+                    updateInterval: 10 * 60
                 ) },
                 { BuildingType.ShipDock, new BuildingInfo(
                     buildingTime: 30 * 60,
-                    updateInterval: 30 * 60
+                    updateInterval: 10 * 60
                 ) },
                 { BuildingType.AirPurificationStation, new BuildingInfo(
-                    buildingTime: 10 * 60,
+                    buildingTime: 10 * 18,
                     updateInterval: 10 * 60
                 ) }
             };
