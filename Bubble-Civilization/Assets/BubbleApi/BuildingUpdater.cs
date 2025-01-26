@@ -45,8 +45,7 @@ namespace BubbleApi
             if (building.data.requireRepair)
                 return false;
 
-            //bool status = new Random().Next(0, 1080 / GlobalStorage.storage.timer.speed) == 0;
-            bool status = new Random().Next(48000, 108000 / GlobalStorage.storage.timer.speed) == 0;
+            bool status = new Random().Next(0, 1080 / GlobalStorage.storage.timer.speed) == 0;
 
             if (status)
                 this.BreakBuilding(building, bubble);

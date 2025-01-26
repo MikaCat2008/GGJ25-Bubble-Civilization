@@ -15,6 +15,7 @@
 
             House_BuildingSystem houseSystem = this.systems.house;
 
+            //This house isnt present in actual game
             Building house = houseSystem.Build(0, bubble);
 
             houseSystem.SetCapacity(house, 10);
