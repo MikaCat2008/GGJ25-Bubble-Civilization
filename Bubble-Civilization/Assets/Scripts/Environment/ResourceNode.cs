@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System;
 
 public class ResourceNode : MonoBehaviour
 {
@@ -6,9 +7,11 @@ public class ResourceNode : MonoBehaviour
     //Поклади мінералів
     //Закинута база
 
+    public event Action OnResourceNodeClicked;
 
-    public void MouseClick()
+    public void OnMouseDown()
     {
         Debug.Log("You clicked on resource.", this);
+        OnResourceNodeClicked?.Invoke();
     }
 }
