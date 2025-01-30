@@ -81,7 +81,9 @@ public class HousePlacePointTree : MonoBehaviour
 
         if (status == BuildingStatus.Ok)
             spriteRenderer.color = new Color(255, 255, 255);
-        else
+        else if (status == BuildingStatus.Broken)
             spriteRenderer.color = new Color(255, 0, 0);
+        else
+            spriteRenderer.color = new Color(0, 255, 0);
     }
 }

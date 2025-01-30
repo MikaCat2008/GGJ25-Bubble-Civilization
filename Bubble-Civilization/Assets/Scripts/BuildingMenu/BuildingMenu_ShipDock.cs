@@ -9,6 +9,10 @@ public class BuildingMenu_ShipDock : BuildingMenu
 
     public override void Show()
     {
+        Building building = WindowManager.GetActiveBuilding();
+        ShipDock_BuildingData data = (ShipDock_BuildingData)building.data;
+
+        this.modeText.text = this.DockModeToString(data.GetDockMode());
         this.SetErrorMessage("");
         this.UpdateProperties();
 
@@ -41,7 +45,6 @@ public class BuildingMenu_ShipDock : BuildingMenu
     {
         Bubble bubble = GlobalStorage.storage.currentBubble;
         Building building = WindowManager.GetActiveBuilding();
-        ShipDock_BuildingData data = (ShipDock_BuildingData)building.data;
 
         try
         {
@@ -68,25 +71,14 @@ public class BuildingMenu_ShipDock : BuildingMenu
         DockMode dockMode = data.GetDockMode();
 
         if (dockMode == DockMode.Free)
-        {
-            this.modeText.text = "Дослідження";
-
             dockMode = DockMode.Exploration;
-        }
         else if (dockMode == DockMode.Exploration)
-        {
-            this.modeText.text = "Доставка";
-
             dockMode = DockMode.Transfer;
-        }
         else if (dockMode == DockMode.Transfer)
-        {
-            this.modeText.text = "Вільна";
-
             dockMode = DockMode.Free;
-        }
 
         data.SetDockMode(dockMode);
+        this.modeText.text = this.DockModeToString(dockMode);
     }
 
     private void UpdateProperties() 
@@ -98,5 +90,14 @@ public class BuildingMenu_ShipDock : BuildingMenu
             $"Кількість працівників: {data.count} / {data.capacity}\n" +
             $"Кількість працівників: {data.ships} / {data.shipsCapacity}"
         );
+    }
+
+    private string DockModeToString(DockMode mode)
+    {
+        if (mode == DockMode.Exploration)
+            return "Дослідження";
+        else if (mode == DockMode.Transfer)
+            return "Доставка";
+        return "Вільна";
     }
 }

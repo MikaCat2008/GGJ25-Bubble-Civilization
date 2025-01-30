@@ -9,6 +9,10 @@ public class BuildingMenu_Mine : BuildingMenu
 
     public override void Show()
     {
+        Building building = WindowManager.GetActiveBuilding();
+        Mine_BuildingData data = (Mine_BuildingData)building.data;
+
+        this.modeText.text = this.MiningModeToString(data.GetMiningMode());
         this.SetErrorMessage("");
         this.UpdateProperties();
 
@@ -45,25 +49,14 @@ public class BuildingMenu_Mine : BuildingMenu
         MiningMode miningMode = data.GetMiningMode();
 
         if (miningMode == MiningMode.Free)
-        { 
-            this.modeText.text = "Паливо";
-
             miningMode = MiningMode.Fuel;
-        }
         else if (miningMode == MiningMode.Fuel)
-        {
-            this.modeText.text = "Матеріали";
-
             miningMode = MiningMode.Materials;
-        }
         else if (miningMode == MiningMode.Materials)
-        {
-            this.modeText.text = "Вільна";
-            
             miningMode = MiningMode.Free;
-        }
 
         data.SetMiningMode(miningMode);
+        this.modeText.text = this.MiningModeToString(miningMode);
     }
 
     private void UpdateProperties() 
@@ -74,5 +67,14 @@ public class BuildingMenu_Mine : BuildingMenu
         this.SetProperties(
             $"Кількість працівників: {data.count} / {data.capacity}"
         );
+    }
+
+    private string MiningModeToString(MiningMode mode)
+    {
+        if (mode == MiningMode.Fuel)
+            return "Паливо";
+        else if (mode == MiningMode.Materials)
+            return "Матеріали";
+        return "Вільна";
     }
 }

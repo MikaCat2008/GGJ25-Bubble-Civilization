@@ -9,6 +9,10 @@ public class BuildingMenu_GreenHouse : BuildingMenu
 
     public override void Show()
     {
+        Building building = WindowManager.GetActiveBuilding();
+        GreenHouse_BuildingData data = (GreenHouse_BuildingData)building.data;
+
+        this.modeText.text = this.GeneratingModeToString(data.GetGeneratingMode());
         this.SetErrorMessage("");
         this.UpdateProperties();
 
@@ -45,31 +49,16 @@ public class BuildingMenu_GreenHouse : BuildingMenu
         GeneratingMode generatingMode = data.GetGeneratingMode();
 
         if (generatingMode == GeneratingMode.Free)
-        {
-            this.modeText.text = "Їжа";
-
             generatingMode = GeneratingMode.Food;
-        }
         else if (generatingMode == GeneratingMode.Food)
-        {
-            this.modeText.text = "Матеріали";
-
             generatingMode = GeneratingMode.Materials;
-        }
         else if (generatingMode == GeneratingMode.Materials)
-        {
-            this.modeText.text = "Кисень";
-
             generatingMode = GeneratingMode.Oxygen;
-        }
         else if (generatingMode == GeneratingMode.Oxygen)
-        {
-            this.modeText.text = "Вільна";
-
             generatingMode = GeneratingMode.Free;
-        }
 
         data.SetGeneratingMode(generatingMode);
+        this.modeText.text = this.GeneratingModeToString(generatingMode);
     }
 
     private void UpdateProperties() 
@@ -80,5 +69,16 @@ public class BuildingMenu_GreenHouse : BuildingMenu
         this.SetProperties(
             $"Кількість працівників: {data.count} / {data.capacity}"
         );
+    }
+
+    private string GeneratingModeToString(GeneratingMode mode)
+    {
+        if (mode == GeneratingMode.Food)
+            return "Їжа";
+        else if (mode == GeneratingMode.Materials)
+            return "Матеріали";
+        else if (mode == GeneratingMode.Oxygen)
+            return "Кисень";
+        return "Вільна";
     }
 }

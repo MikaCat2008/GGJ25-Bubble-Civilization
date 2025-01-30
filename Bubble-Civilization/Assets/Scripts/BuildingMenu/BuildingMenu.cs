@@ -73,6 +73,9 @@ public class BuildingMenu : MonoBehaviour
     public void Hide()
     {
         this.gameObject.SetActive(false);
+        BuildingPlacementUI.SetBuildingStatus(
+            WindowManager.GetActiveBuilding().id, BuildingStatus.Ok
+        );
     }
 
     public void OnRepair()

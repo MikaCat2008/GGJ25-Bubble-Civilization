@@ -4,7 +4,7 @@ using UnityEngine;
 
 public enum BuildingStatus
 {
-    Ok, Broken
+    Ok, Broken, Selected
 }
 
 
@@ -88,6 +88,8 @@ public class HousePlacement : MonoBehaviour
 
     public void SetBuildingStatus(int id, BuildingStatus status)
     {
+        //Debug.Log(id);
+
         GameObject place = this.GetPlacePoint(id);
         HousePlacePoint placePoint = place.GetComponent<HousePlacePoint>();
 

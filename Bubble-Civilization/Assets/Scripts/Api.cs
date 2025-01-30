@@ -32,8 +32,6 @@ public class Api : MonoBehaviour
         };
         GlobalStorage.buildingUpdater.OnBreak += (Building building, Bubble bubble) =>
         {
-            Debug.Log(GlobalStorage.systems.GetBuildingSystem(building.GetBuildingType()).BuildingToString(building));
-
             Building activeBuilding = WindowManager.GetActiveBuilding();
 
             if (building == activeBuilding)

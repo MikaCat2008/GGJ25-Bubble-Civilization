@@ -74,12 +74,16 @@ public class Window : MonoBehaviour
         {
             buildingMenu = this.GetBuildingMenu(this.activeBuilding);
             buildingMenu.Hide();
+            
+            BuildingPlacementUI.SetBuildingStatus(this.activeBuilding.id, BuildingStatus.Ok);
         }
 
         this.activeBuilding = building;
 
         buildingMenu = this.GetBuildingMenu(building);
         buildingMenu.Show();
+        
+        BuildingPlacementUI.SetBuildingStatus(building.id, BuildingStatus.Selected);
     }
 
     public void OpenBuildingMenuChoice()
